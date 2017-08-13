@@ -33,7 +33,7 @@ Palmer Wing room 2097 -- for the office hour purposes.
 * Decision Trees
 * Naive Bayes
 * Introduction to computer vision, opencv2
-* Project: simple object detection using Histograms of Oriented Gradients (HOG), support vector machines (SVM), and sliding windows
+* Pedestrian detection using Histograms of Oriented Gradients (HOG), support vector machines (SVM), and sliding windows
 
 
 ## Grade Allocation
