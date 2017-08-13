@@ -2,8 +2,8 @@
 
 ## Course Overview
 
-- **Objectives** The primary objective of this course is to introduce knowledge representation, problem solving and learning methods of Artificial Intelligence. Furthermore, students will be learning how to apply such techniques into games.
-- **Expectations** Students are expected to have Java programming background as the entire course will be primary taught in Java. In addition, students are expected to devote a large amount of time learning how to implement algorithms learned in class.
+- **Objectives** The primary objective of this course is to introduce knowledge representation, problem solving and learning methods of Artificial Intelligence. Furthermore, students will be learning how to apply such techniques to games.
+- **Expectations** Students are expected to have programming experience in at least one language. Python experience is preferred, as the course will be taught in Python. In addition, students are expected to devote a large amount of time learning how to implement algorithms learned in class.
 
 ## Logistics
 
