@@ -19,8 +19,8 @@ Palmer Wing room 2097 -- for the office hour purposes.
 
 > Thus, if you don't find us in the classroom, please find us at the library.
 
-## Course Objectives
-
+## Course Objectives (ambitious): 
+> Part I --- Classic AI(Eric, weeks 1-8)
 * Knowledge Representation (Graph, Node and Edge)
 * Brute force searching algorithm (DFS & BFS)
 * Heuristic searching algorithm (A*)
@@ -28,9 +28,17 @@ Palmer Wing room 2097 -- for the office hour purposes.
 * Min-Max
 * Monte Carlo tree search (MCTS)
 
-## Grading Allocation
+> Part II --- Machine Learning and Computer Vision (Mark, weeks 9-Finals Week)
+* Concepts of Machine Learning, scikit-learn
+* Decision Trees
+* Naive Bayes
+* Introduction to computer vision, opencv2
+* Project: simple object detection using Histograms of Oriented Gradients (HOG), support vector machines (SVM), and sliding windows
 
-1. Quiz (4) 40 pts
+
+## Grade Allocation
+
+1. Quizzes (4) 40 pts
 2. Homework (4) 40 pts
 3. Course Project 20 pts
 4. Attendance 5 pts
@@ -63,22 +71,6 @@ The schedule below is tentative and is subject to change.
 
 | Week # [date]      | Topic     | Notes |
 | ------------------ | --- | --- |
-| 1  [08/27]         | [Introduction][1] | Set up environment |
-| 2  [09/03]         | [Graph representation][2] |  |
-| 3  [09/10]         | [Graph representation][2] |  |
-| 4  [09/17]         | [BFS, DFS][10] | [Homework 1][9], Quiz 1 |
-| 5  [09/24]         | [Dijkstra search][3] |  |
-| 6  [10/01]         | [Heuristic search][4] |  |
-| 7  [10/08]         | [Heuristic search][4] |  |
-| 8  [10/15]         | [Minimax][5] | [Homework 2][11], Quiz 2 |
-| 9  [10/22]         | [Minimax][5] | No class |
-| 10 [10/29]         | [Alpha-beta pruning][6] |  |
-| 11 [11/05]         | [Alpha-beta pruning][6] |  |
-| 12 [11/12]         | [Monte Carlo Tree Search][7] |  |
-| 13 [11/19]         | [Monte Carlo Tree Search][7] | [Homework 3][12], Quiz 3 |
-| 14 [11/26]         | Thanks Giving Holiday | No class |
-| 15 [12/03]         | [Project][8] | [Homework 4][13], Quiz 4 |
-| Final [12/10]      | [Project][8] |  |
 
 [1]: notes/introduction.md
 [2]: notes/graph-representation.md
