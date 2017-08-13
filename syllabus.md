@@ -7,17 +7,17 @@
 
 ## Logistics
 
-- **Instructor** Hsiang-Yu (Eric) Liao [rcliao01@gmail.com](mailto:rcliao01@gmail.com)
+- **Instructors** Hsiang-Yu (Eric) Liao [rcliao01@gmail.com](mailto:rcliao01@gmail.com), Mark Sargent [msargen2@calstatela.edu](mailto:msargen2@calstatela.edu)
 - **Lecture** Saturday 8:00 AM to 10:45 AM
-- **Office Hours** Saturday 10:45 AM to 12:00 PM or online 24/7
-- **Office Hours Location** Either at the classroom (E&T A309 or library -- see notes below)
+- **Office Hours** Eric: Saturday 10:45 AM to 12:00 PM or online 24/7, Mark: Fri 9am to 12pm
+- **Office Hours Location**  E&T A310 (the old Senior Design room)
 - **Location** E&T A309
-- **Text Book** None as we will have all notes hosted on Github.
+- **Text Book** None as we will have all notes hosted either on Github or on CSNS.
 
 > As the university notice, we (part-time lecturers) can use the library room --
-Palmer Wing room 2097 -- for the office hour purpose.
+Palmer Wing room 2097 -- for the office hour purposes.
 
-> Thus, if you don't find me at the classroom, please find me at library.
+> Thus, if you don't find us in the classroom, please find us at the library.
 
 ## Course Objectives
 
