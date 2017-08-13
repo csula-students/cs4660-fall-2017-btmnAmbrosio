@@ -20,7 +20,7 @@ Palmer Wing room 2097 -- for the office hour purposes.
 > Thus, if you don't find us in the classroom, please find us at the library.
 
 ## Course Objectives (ambitious): 
-> Part I --- Classic AI(Eric, weeks 1-8)
+### Part I --- Classic AI(Eric, weeks 1-8)
 * Knowledge Representation (Graph, Node and Edge)
 * Brute force searching algorithm (DFS & BFS)
 * Heuristic searching algorithm (A*)
@@ -28,7 +28,7 @@ Palmer Wing room 2097 -- for the office hour purposes.
 * Min-Max
 * Monte Carlo tree search (MCTS)
 
-> Part II --- Machine Learning and Computer Vision (Mark, weeks 9-Finals Week)
+### Part II --- Machine Learning and Computer Vision (Mark, weeks 9-Finals Week)
 * Concepts of Machine Learning, scikit-learn
 * Decision Trees
 * Naive Bayes
