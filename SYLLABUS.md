@@ -10,17 +10,20 @@
 - **Instructors** Hsiang-Yu (Eric) Liao [rcliao01@gmail.com](mailto:rcliao01@gmail.com), Mark Sargent [msargen2@calstatela.edu](mailto:msargen2@calstatela.edu)
 - **Lecture** Saturday 8:00 AM to 10:45 AM
 - **Office Hours** Eric: Saturday 10:45 AM to 12:00 PM or online 24/7, Mark: Fri 9am to 12pm
-- **Office Hours Location**  E&T A310 (the old Senior Design room)
-- **Location** E&T A309
+- **Office Hours Location** E&T A310 (the old Senior Design room)
+- **Lecture Location** SH C141
 - **Text Book** None as we will have all notes hosted either on Github or on CSNS.
 
-> As the university notice, we (part-time lecturers) can use the library room --
-Palmer Wing room 2097 -- for the office hour purposes.
+> Recommended text book: Artificial Intelligence A Modern Approach by Russell and Norvig
+
+> As the university notice, we (part-time lecturers) can use the library room -- Palmer Wing room 2097 -- for the office hour purposes.
 
 > Thus, if you don't find us in the classroom, please find us at the library.
 
 ## Course Objectives (ambitious): 
+
 ### Part I --- Classic AI (Eric, weeks 1-8)
+
 * Knowledge Representation (Graph, Node and Edge)
 * Brute force searching algorithm (DFS & BFS)
 * Heuristic searching algorithm (A*)
@@ -29,6 +32,7 @@ Palmer Wing room 2097 -- for the office hour purposes.
 * Monte Carlo tree search (MCTS)
 
 ### Part II --- Machine Learning and Computer Vision (Mark, weeks 9-Finals Week)
+
 * Concepts of Machine Learning, scikit-learn
 * Decision Trees
 * Naive Bayes
@@ -70,18 +74,35 @@ Cheating on assignments and exams will not be tolerated. All parties involved wi
 The schedule below is tentative and is subject to change.
 
 | Week # [date]      | Topic     | Notes |
-| ------------------ | --- | --- |
+| :----------------- | :-- | :-- |
+| 1  [08/26]         | [Introduction][1] | Set up environment |
+| 2  [09/02]         | [Intro to Python][2] |  |
+| 3  [09/09]         | [Graph representation][3] |  |
+| 4  [09/16]         | [BFS, DFS][4] | [Homework 1][11], Quiz 1 |
+| 5  [09/23]         | [Dijkstra search][5] |  |
+| 6  [09/30]         | [Heuristic search][6] |  |
+| 7  [10/07]         | [Adversarial search][7] |  |
+| 8  [10/14]         | [Monte Carlo Tree Search][8] | [Homework 2][11], Quiz 2 |
+| 9  [10/21]         |  |  |
+| 10 [10/28]         |  |  |
+| 11 [11/04]         |  |  |
+| 12 [11/11]         |  |  |
+| 13 [11/18]         |  |  |
+| 14 [11/25]         |  |  |
+| 15 [12/02]         |  |  |
+| Final [12/09]      |  |  |
 
 [1]: notes/introduction.md
-[2]: notes/graph-representation.md
-[3]: notes/dijkstra.md
-[4]: notes/heuristic-search.md
-[5]: notes/minimax.md
-[6]: notes/alpha-beta-pruning.md
-[7]: notes/monte-carlo-tree-search.md
-[8]: notes/project.md
-[9]: notes/homeworks/homework1.md
-[10]: notes/problem-searching.md
+[2]: notes/python.md
+[3]: notes/graph-representation.md
+[4]: notes/search-algorithm.md
+[5]: notes/dijkstra.md
+[6]: notes/heuristic-search.md
+[7]: notes/adversarial-search.md
+[8]: notes/monte-carlo-tree-search.md
+[9]: notes/project.md
+[10]: notes/homeworks/homework1.md
 [11]: notes/homeworks/homework2.md
 [12]: notes/homeworks/homework3.md
 [13]: notes/homeworks/homework4.md
+
