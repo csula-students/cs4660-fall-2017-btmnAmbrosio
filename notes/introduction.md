@@ -4,7 +4,7 @@ Welcome to introduction to AI course!
 
 ## Objectives
 
-* Syllabus
+* [Syllabus](../SYLLABUS.md)
 * Introduction to AI
 * Set up environment
 
@@ -15,8 +15,8 @@ Welcome to introduction to AI course!
 
 ### What is Artificial Intelligence?
 
-AI is basically an **intelligent agent** that makes decisions based on its sensors
-and use actuators to mutate environment.
+Classic AI covers the field of an **intelligent agent** that makes decisions
+based on its sensors and use actuators to mutate the environment.
 
 An example of the intelligent agent would be *financial agent*. They can get the
 stock market information (**sensors**) and use it to make trades (**actuators**).
@@ -65,27 +65,27 @@ Artificial intelligence is to create such algorithm to do general problem solvin
 
 ## Environment setup
 
-Follow the note to set up Java and Gradle -- https://github.com/csula/Utilities/blob/master/setups/java-gradle-setup.md
+Follow the note to set up Python -- https://github.com/csula/Utilities/blob/master/setups/python-setup.md
 
 And follow the note to set up Git/Github -- https://github.com/csula/Utilities/blob/master/setups/git-github-notes.md
 
-## Wrap Up Java Review Exercise
+## Wrap Up Python Exercise
 
 Once you set up the above two dependencies, please do this wrap up exercise to
 test your local environment setup!
 
-Since not everyone has experience of using Github/git before, we will go over
+Since not everyone has experience of using Github/Git before, we will go over
 in class exercise to demonstrate how you should submit your assignment in future.
 
-The goal of this exercise is to review mainly two concepts (Java File IO &
-Object Oriented Programming) as they are the primary requirements for the course.
+The goal of this exercise is to review mainly two concepts (File IO &
+Object Oriented Programming).
 
 You may start reading through the source code folder for some starting point of the project.
 
 1. Fork/clone repository
 2. Code, Commit & pass unit test  
-> Note 1: You can run `gradle check` to check if you passed the provided unit tests right away locally  
-> Note 2: DO NOT MODIFY ANY EXISTING CODE
+> Note 1: You can run `python -m unittest discover` to check if you passed the provided unit tests right away locally  
+> Note 2: DO NOT MODIFY ANY EXISTING TEST CODES
 
 3. Pull request & review comments  
 > Note that in the pull request, you will see the build result immediately in the pull request status. Please make sure you at least pass the unit tests as they are one of the grading criteria.
@@ -93,12 +93,13 @@ You may start reading through the source code folder for some starting point of 
 If you have trouble pushing to your own repository under your workspace
 
 ```bash
-git remote set-url origin {Your repository url} # https://github.com/csula/cs4660-fall-2016-exercise-1-rcliao.git for example
+git remote set-url origin {Your repository url} # https://github.com/csula/cs4660-fall-2017-exercise-1-rcliao.git for example
 git commit -a # will open text editor for you to enter commit message
 git push # push to origin server (which will be your repository)
 ```
 
-Click here to set your repository -- https://classroom.github.com/assignment-invitations/d81e544ad4dc4b205f3ae61d41824625
+Click here to set your repository -- https://classroom.github.com/a/5llmpWhz
 
 1. Push your code to that repository.
 2. Paste link to CSNS "Your repository" section
+

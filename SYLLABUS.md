@@ -17,7 +17,6 @@
 > Recommended text book: Artificial Intelligence A Modern Approach by Russell and Norvig
 
 > As the university notice, we (part-time lecturers) can use the library room -- Palmer Wing room 2097 -- for the office hour purposes.
-
 > Thus, if you don't find us in the classroom, please find us at the library.
 
 ## Course Objectives (ambitious): 
@@ -27,8 +26,7 @@
 * Knowledge Representation (Graph, Node and Edge)
 * Brute force searching algorithm (DFS & BFS)
 * Heuristic searching algorithm (A*)
-* Alpha-Beta pruning
-* Min-Max
+* Adversarial Search (MiniMax & Alpha-Beta pruning)
 * Monte Carlo tree search (MCTS)
 
 ### Part II --- Machine Learning and Computer Vision (Mark, weeks 9-Finals Week)
@@ -38,7 +36,6 @@
 * Naive Bayes
 * Introduction to computer vision, opencv2
 * Pedestrian detection using Histograms of Oriented Gradients (HOG), support vector machines (SVM), and sliding windows
-
 
 ## Grade Allocation
 
@@ -83,14 +80,14 @@ The schedule below is tentative and is subject to change.
 | 6  [09/30]         | [Heuristic search][6] |  |
 | 7  [10/07]         | [Adversarial search][7] |  |
 | 8  [10/14]         | [Monte Carlo Tree Search][8] | [Homework 2][11], Quiz 2 |
-| 9  [10/21]         |  |  |
-| 10 [10/28]         |  |  |
-| 11 [11/04]         |  |  |
-| 12 [11/11]         |  |  |
-| 13 [11/18]         |  |  |
-| 14 [11/25]         |  |  |
-| 15 [12/02]         |  |  |
-| Final [12/09]      |  |  |
+| 9  [10/21]         | [Concept of Machine Learning][14] |  |
+| 10 [10/28]         | [Concept of Machine Learning][14] |  |
+| 11 [11/04]         | [Decision Tree][15] |  |
+| 12 [11/11]         | [Naive Bayes][16] |  |
+| 13 [11/18]         | [Introduction to Computer Vision][17] |  |
+| 14 [11/25]         | [Computer Vision][18] |  |
+| 15 [12/02]         | [Computer Vision][18] |  |
+| Final [12/09]      | [Project][9] |  |
 
 [1]: notes/introduction.md
 [2]: notes/python.md

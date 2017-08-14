@@ -4,7 +4,7 @@
 
 Welcome to Artificial Intelligence course!
 
-In this course, we start by learning the classical AI problem (knowledge
+In this course, we start by learning the classic AI problem (knowledge
 representation with *Graph data structure* & many different search algorithms) to
 Machine Learning space (some intro to Python Scikit learn and further into the 
 computer vision space).
