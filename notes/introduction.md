@@ -24,14 +24,8 @@ There are eight definitions of AI, laid out along two dimensions:
 
 | | Thinking | Acting |
 | :-- | :-- | :--
-| Humanly | "The exciting new effort to make computers think ... machines with minds, in the full and literal sense" (Haugeland, 1985)  
-"[The automation of] activities that we associate with human thinking, activities such as decision-making, problem solving, learning ..." (Bellman, 1978) |
-"The art of creating machines that perform functions that require intelligence when performed by people." (Kurzweil, 1990)  
-"The study of how to make computers do things at which, at the moment, people are better." (Rich and Knight, 1991) |
-| Rationally | "The study of mental faculties through the use of computational models." (Charniak and McDermott, 1985)  
-"The study of the computations that make it possible to perceive, reason, and act." (Winston, 1992) |
-"Computational Intelligence is the study of the design of intelligent agents." (Poole et al., 1998)  
-"AI ... is concerned with intelligent behavior in artifacts." (Nilsson, 1998) |
+| Humanly | <ul><li>"The exciting new effort to make computers think ... machines with minds, in the full and literal sense" (Haugeland, 1985)</li><li>"[The automation of] activities that we associate with human thinking, activities such as decision-making, problem solving, learning ..." (Bellman, 1978)</li></ul> | <ul><li>"The art of creating machines that perform functions that require intelligence when performed by people." (Kurzweil, 1990)</li><li>"The study of how to make computers do things at which, at the moment, people are better." (Rich and Knight, 1991)</li></ul> |
+| Rationally | <ul><li>"The study of mental faculties through the use of computational models." (Charniak and McDermott, 1985)</li><li>"The study of the computations that make it possible to perceive, reason, and act." (Winston, 1992)</li></ul> | <ul><li>"Computational Intelligence is the study of the design of intelligent agents." (Poole et al., 1998)</li><li>"AI ... is concerned with intelligent behavior in artifacts." (Nilsson, 1998)</li></ul> |
 
 > Figure 1.1 from Artificial Intelligence A Modern Approach (3rd edition)
 
