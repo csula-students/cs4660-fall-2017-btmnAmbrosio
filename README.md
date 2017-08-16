@@ -47,3 +47,10 @@ python -m unittest discover
 
 * [Syllabus](SYLLABUS.md)
 * Course chatroom
+
+## Recommended reading
+
+* https://blog.openai.com/dota-2/
+* https://deepmind.com/blog/deepmind-and-blizzard-open-starcraft-ii-ai-research-environment/
+* https://sscaitournament.com/
+

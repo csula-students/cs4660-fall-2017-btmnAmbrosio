@@ -2,24 +2,76 @@
 
 Welcome to introduction to AI course!
 
-## Objectives
+## Agenda
 
 * [Syllabus](../SYLLABUS.md)
 * Introduction to AI
 * Set up environment
+    * Wrap up Python exercise
 
 ## Metrics
 
 * Environment setup
 * Concept of Artificial Intelligence
 
-### What is Artificial Intelligence?
+### Introduction to Artificial Intelligence
 
-Classic AI covers the field of an **intelligent agent** that makes decisions
-based on its sensors and use actuators to mutate the environment.
+Before we talk about Artificial Intelligence, we will need to define intelligence.
 
-An example of the intelligent agent would be *financial agent*. They can get the
-stock market information (**sensors**) and use it to make trades (**actuators**).
+#### What is Artificial Intelligence?
+
+There are eight definitions of AI, laid out along two dimensions:
+
+| | Thinking | Acting |
+| :-- | :-- | :--
+| Humanly | "The exciting new effort to make computers think ... machines with minds, in the full and literal sense" (Haugeland, 1985)  
+"[The automation of] activities that we associate with human thinking, activities such as decision-making, problem solving, learning ..." (Bellman, 1978) |
+"The art of creating machines that perform functions that require intelligence when performed by people." (Kurzweil, 1990)  
+"The study of how to make computers do things at which, at the moment, people are better." (Rich and Knight, 1991) |
+| Rationally | "The study of mental faculties through the use of computational models." (Charniak and McDermott, 1985)  
+"The study of the computations that make it possible to perceive, reason, and act." (Winston, 1992) |
+"Computational Intelligence is the study of the design of intelligent agents." (Poole et al., 1998)  
+"AI ... is concerned with intelligent behavior in artifacts." (Nilsson, 1998) |
+
+> Figure 1.1 from Artificial Intelligence A Modern Approach (3rd edition)
+
+Most well known field comes from "Acting humanly" dimension -- The Turing Tests
+(proposed by Alan Turing (1950).
+
+The Turing Tests was designed to provide a satisfactory operational definition
+of intelligence. It's all about a computer acting like human by a human
+interrogator. In specific, human is interacting with computer by asking a
+couple questions and computer will try to answer them. At the end of test, this
+human will need to judge the other side being human or computer.
+
+The Turing Tests implies that computer would need the following capabilities to
+pass the test:
+
+* Natural language processing
+* Knowledge representation
+* Automated reasoning
+* Machine learning
+* Computer vision
+* Robotics
+
+In which, Alan Turing predicts many of the problems in next 50 years. In other
+word, many of the above fields are still actively being studied now.
+
+In this course, we will focus on the "Acting Rationally" to create the rational
+agents that maximize the chance of success.
+
+#### Rational Agents (Intelligent Agents)
+
+In earlier section, we went over the concept of rational agents as central to
+our course. In this section, we will make more concrete explanation to rational
+agents. Moreover, we will go over a small set of design principles for building
+successful agents -- systems that can reasonably be called intelligent.
+
+An **agent** is anything that makes decisions based on information perceived by
+its environment with its *sensors* and use *actuators* to mutate the
+environment. An example of the intelligent agent would be *financial agent*.
+They can get the stock market information (**sensors**) and use it to make
+trades (**actuators**).
 
 The **decisions** it involves between the information from sensors to actions of
 actuators is the key of AI.
@@ -27,10 +79,16 @@ actuators is the key of AI.
 This entire loop of sensors getting information to making decisions from AI algorithm
 and to actions of actuators is often called **Perception-Action cycle**.
 
-Perception-Action cycle is what we (Artificial Intelligence developers) are usually
+*Perception-Action cycle* is what we (Artificial Intelligence developers) are usually
 interested of implementing.
 
-### Terminologies
+#### Omniscience vs Rationality
+
+#### PEAS
+
+Performance, Environment, Actuators, Sensors.
+
+#### Environments
 
 Following terminologies will be focus on the environment types:
 
@@ -46,7 +104,7 @@ Following terminologies will be focus on the environment types:
   * Environment goes against you (benign) like Chess (environment -- your opponent -- is trying to defeat you)
   * Or environment is just there (like weather effect for selv-driving car)
 
-### Summary
+#### Summary
 
 AI can often be seen as an uncertainty management.
 
@@ -59,17 +117,17 @@ But how do our agents handle the situation it hasn't seen or programmed to do?
 
 Artificial intelligence is to create such algorithm to do general problem solving.
 
-### Recommended reading
+#### Recommended reading
 
 * https://en.wikipedia.org/wiki/Intelligent_agent
 
-## Environment setup
+### Environment setup
 
 Follow the note to set up Python -- https://github.com/csula/Utilities/blob/master/setups/python-setup.md
 
 And follow the note to set up Git/Github -- https://github.com/csula/Utilities/blob/master/setups/git-github-notes.md
 
-## Wrap Up Python Exercise
+### Wrap Up Python Exercise
 
 Once you set up the above two dependencies, please do this wrap up exercise to
 test your local environment setup!
