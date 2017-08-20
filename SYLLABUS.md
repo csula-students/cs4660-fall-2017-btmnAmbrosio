@@ -75,7 +75,7 @@ The schedule below is tentative and is subject to change.
 | 1  [08/26]         | [Introduction][1] | Set up environment |
 | 2  [09/02]         | [Intro to Python][2] |  |
 | 3  [09/09]         | [Graph representation][3] |  |
-| 4  [09/16]         | [BFS, DFS][4] | [Homework 1][11], Quiz 1 |
+| 4  [09/16]         | [BFS, DFS][4] | [Homework 1][10], Quiz 1 |
 | 5  [09/23]         | [Dijkstra search][5] |  |
 | 6  [09/30]         | [Heuristic search][6] |  |
 | 7  [10/07]         | [Adversarial search][7] |  |
@@ -102,4 +102,9 @@ The schedule below is tentative and is subject to change.
 [11]: notes/homeworks/homework2.md
 [12]: notes/homeworks/homework3.md
 [13]: notes/homeworks/homework4.md
+[14]: notes/machine-learning.md
+[15]: notes/decision-tree.md
+[16]: notes/naive-bayes.md
+[17]: notes/intro-computer-vision.md
+[18]: notes/computer-vision.md
 

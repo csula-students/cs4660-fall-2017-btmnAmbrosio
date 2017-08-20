@@ -427,3 +427,7 @@ with open('example.csv', 'rb') as csvfile:
 ### Package manager -- pip
 
 https://pip.pypa.io/en/stable/installing/
+
+## Write Python 2 & 3 Compatible Code
+
+http://python-future.org/compatible_idioms.html
