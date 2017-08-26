@@ -33,7 +33,7 @@ To get started, you will need to have some basic tools ready:
 
 * [Git](https://git-scm.com/)
 * [Text editor -- recommended VS Code](https://code.visualstudio.com/)
-* Terminal
+* Terminal -- or Git Bash on Windows
 
 Then you can start hacking codes on the `cs4660` folder.
 
@@ -46,7 +46,8 @@ python -m unittest discover
 ## Quick links
 
 * [Syllabus](SYLLABUS.md)
-* Course chatroom
+* [Course chatroom](https://csula-cs4660-fall2017.slack.com) -- you will only  
+be able to get into chatroom if you are invited already (see CSNS)
 
 ## Recommended reading
 
