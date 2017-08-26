@@ -25,3 +25,8 @@ basic Git https://github.com/csula/Utilities/blob/master/tutorials/git.md
 
 After you finished reading the above tutorial, proceed to download the source
 code in the `cs4660` folder.
+
+## Recording
+
+https://asciinema.org/a/PKpaz1kpJWE3inR5Xhh8EfDJ7
+
