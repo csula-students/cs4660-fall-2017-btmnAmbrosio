@@ -80,9 +80,9 @@ The schedule below is tentative and is subject to change.
 | 6  [09/30]         | [Heuristic search][6] |  |
 | 7  [10/07]         | [Adversarial search][7] |  |
 | 8  [10/14]         | [Monte Carlo Tree Search][8] | [Homework 2][11], Quiz 2 |
-| 9  [10/21]         | [Concept of Machine Learning][14] |  |
-| 10 [10/28]         | [Concept of Machine Learning][14] |  |
-| 11 [11/04]         | [Decision Tree][15] |  |
+| 9  [10/21]         | [Concepts of Machine Learning][14] |  |
+| 10 [10/28]         | [Concepts of Machine Learning][14] |  |
+| 11 [11/04]         | [Decision Trees][15] |  |
 | 12 [11/11]         | [Naive Bayes][16] |  |
 | 13 [11/18]         | [Introduction to Computer Vision][17] |  |
 | 14 [11/25]         | [Computer Vision][18] |  |
