@@ -2,7 +2,7 @@
 
 import unittest
 
-from math import math
+from simple import math
 
 class MathTestCase(unittest.TestCase):
     """MathTestCase defines test cases for math module"""
