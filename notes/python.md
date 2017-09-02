@@ -46,6 +46,12 @@ of the dynamic type language.
 In following lecture, we will go over some of the basic tutorial of Python
 language and practice them in the TDD manner.
 
+---
+
+Plus, you can always import antigravity!
+
+![import antigravity from XKCD comic](https://imgs.xkcd.com/comics/python.png)
+
 ### Importance of Indentation
 
 Before we dive into the Python specific syntax, we need to talk about one very
@@ -74,12 +80,17 @@ Therefore, it is highly recommended for you to display all the invisible charact
 > Don't ask why your code doesn't work later because your code contains both
 > hard tab and soft tab (1 hard tab and 4 spaces)
 
+![5 Stages of Debugging](https://i.redd.it/7593yrkzhgiz.jpg)
+
+> Please! Showing invisible characters will help you to avoid the 5 stages of debugging
+
 ### Variables and types
 
-In Python, to define variable, you don't need to specify types not like Java.
-e.g. `int a = 3;`
+From this section and onward, I'll assume you are already familiar with Java and
+build various knowledge based on what you've already known in Java to Python.
 
-In other word, you can simply assign variable just like below:
+To define a variable, you don't need to specify types not like Java.
+e.g. `int a = 3;` in Java vs `a =3` in Python
 
 ```python
 # Numbers
