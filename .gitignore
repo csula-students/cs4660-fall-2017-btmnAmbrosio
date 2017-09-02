@@ -100,4 +100,11 @@ ENV/
 
 .DS_Store
 
+# PyCharm IDE generated files
 .idea/
+
+# Virtualenv related
+bin/
+include/
+pip-selfcheck.json
+

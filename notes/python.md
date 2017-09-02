@@ -275,6 +275,47 @@ def add(x, y): return x+y
 
 map(add, seq, seq)
 # [0, 2, 4, 6, 8, 10, 12, 14]
+
+# Python 2 and 3:
+from functools import reduce
+
+assert reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) == 1+2+3+4+5
+```
+
+Quite note on the methods above, they work in Python 2 only. To make the code
+works with Python 2 and 3:
+
+```python
+# Python 2 only:
+mynewlist = map(f, myoldlist)
+assert mynewlist == [f(x) for x in myoldlist]
+# Python 2 and 3: option 1
+# Idiomatic Py3, but inefficient on Py2
+mynewlist = list(map(f, myoldlist))
+assert mynewlist == [f(x) for x in myoldlist]
+# Python 2 and 3: option 2
+from builtins import map
+
+mynewlist = list(map(f, myoldlist))
+assert mynewlist == [f(x) for x in myoldlist]
+# Python 2 and 3: option 3
+try:
+    import itertools.imap as map
+except ImportError:
+    pass
+
+mynewlist = list(map(f, myoldlist))    # inefficient on Py2
+assert mynewlist == [f(x) for x in myoldlist]
+# Python 2 and 3: option 4
+from future.utils import lmap
+
+mynewlist = lmap(f, myoldlist)
+assert mynewlist == [f(x) for x in myoldlist]
+# Python 2 and 3: option 5
+from past.builtins import map
+
+mynewlist = map(f, myoldlist)
+assert mynewlist == [f(x) for x in myoldlist]
 ```
 
 **Tuples**
@@ -418,21 +459,26 @@ while source.hasNext():
 ### File read/write
 
 ```python
-f = open('file_name.extension', 'r') # second argument is for mode read or write or both!
+# Python 2 only
+f = open('myfile.txt')
+data = f.read()              # as a byte string
+text = data.decode('utf-8')
 
-f.read() # reads out the entire content
-f.readline() # reads line by line
+# Python 2 and 3: alternative 1
+from io import open
+f = open('myfile.txt', 'rb')
+data = f.read()              # as bytes
+text = data.decode('utf-8')  # unicode, not bytes
 
-# below also works
-for line in f:
-  print line
-
-f.write('Hello world!\n') # to write to file
+# Python 2 and 3: alternative 2
+from io import open
+f = open('myfile.txt', encoding='utf-8')
+text = f.read()    # unicode, not bytes
 ```
 
 ### json
 
-Json is built-in with Python!
+JSON is built-in with Python!
 
 ```python
 # write json string

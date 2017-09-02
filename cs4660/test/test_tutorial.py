@@ -31,12 +31,12 @@ class ListTestCase(unittest.TestCase):
     def test_get_sum(self):
         """test to get sum of number list"""
         self.assertEqual(6, lists.get_sum(self.l_1))
-        self.assertEqual(18, lists.get_sum(self.l_2))
+        self.assertEqual(15, lists.get_sum(self.l_2))
 
     def test_get_avg(self):
         """test to get average of the number list"""
         self.assertEqual(2, lists.get_avg(self.l_1))
-        self.assertEqual(6, lists.get_avg(self.l_2))
+        self.assertEqual(5, lists.get_avg(self.l_2))
 
 class SimpleFileTestCase(unittest.TestCase):
     """SimplefileTestCase tests the file read implementation"""
@@ -55,8 +55,8 @@ class SimpleFileTestCase(unittest.TestCase):
 
     def test_min(self):
         """test_min tests to see if the file can retrieve min value"""
-        self.assertEqual(-5, self.simple_file.get_max(4))
+        self.assertEqual(-5, self.simple_file.get_min(4))
 
     def test_sum(self):
         """test_sum tests to see if the file can retrieve sum value"""
-        self.assertEqual(36, self.simple_file.get_max(1))
+        self.assertEqual(36, self.simple_file.get_sum(1))
