@@ -1,16 +1,26 @@
-"""graph module defines the knowledge representations files"""
-
 """
-Commonly a Graph would need to have following methods:
+graph module defines the knowledge representations files
 
-* adjacent
-* neighbors
-* addNode
-* removeNode
-* addEdge
-* removeEdge
-* distance
-* getNode
+A Graph has following methods:
+
+* adjacent(node_1, node_2)
+    - returns true if node_1 and node_2 are directly connected or false otherwise
+* neighbors(node)
+    - returns all nodes that is adjacenct from node
+* add_node(node)
+    - adds a new node to its internal data structure.
+    - returns true if the node is added and false if the node already exists
+* remove_node
+    - remove a node from its internal data structure
+    - returns true if the node is removed and false if the node does not exist
+* add_edge
+    - adds a new edge to its internal data structure
+    - returns true if the edge is added and false if the edge already existed
+* remove_edge
+    - remove an edge from its internal data structure
+    - returns true if the edge is removed and false if the edge does not exist
+* get_node
+    - designed to be helper method to retrieve certain node by data
 """
 
 def construct_graph_from_file(graph, file_path):
@@ -28,6 +38,7 @@ def construct_graph_from_file(graph, file_path):
     return graph
 
 class Node(object):
+    """Node represents basic unit of graph"""
     def __init__(self, data):
         self.data = data
 
@@ -38,6 +49,7 @@ class Node(object):
         return self.data == other_node.data
 
 class Edge(object):
+    """Edge represents basic unit of graph connecting between two edges"""
     def __init__(self, from_node, to_node, weight):
         self.from_node = from_node
         self.to_node = to_node
@@ -48,9 +60,15 @@ class Edge(object):
     def __eq__(self, other_node):
         return self.from_node == other_node.from_node and self.to_node == other_node.to_node and self.weight == other_node.weight
 
+
 class AdjacencyList(object):
+    """
+    AdjacencyList is one of the graph representation which uses adjacency list to
+    store nodes and edges
+    """
     def __init__(self):
-        pass
+        # adjacencyList should be a dictonary of node to edges
+        self.adjacency_list = {}
 
     def adjacent(self, node_1, node_2):
         pass
@@ -68,9 +86,6 @@ class AdjacencyList(object):
         pass
 
     def remove_edge(self, edge):
-        pass
-
-    def distance(self, node_1, node_2):
         pass
 
     def get_node(self, node_data):
@@ -78,7 +93,12 @@ class AdjacencyList(object):
 
 class AdjacencyMatrix(object):
     def __init__(self):
-        pass
+        # adjacency_matrix should be a two dimensions array of numbers that
+        # represents how one node connects to another
+        self.adjacency_matrix = []
+        # in additional to the matrix, you will also need to store a list of Nodes
+        # as separate list of nodes
+        self.nodes = []
 
     def adjacent(self, node_1, node_2):
         pass
@@ -96,17 +116,17 @@ class AdjacencyMatrix(object):
         pass
 
     def remove_edge(self, edge):
-        pass
-
-    def distance(self, node_1, node_2):
         pass
 
     def get_node(self, node_data):
         pass
 
 class ObjectOriented(object):
+    """ObjectOriented defines the edges and nodes as both list"""
     def __init__(self):
-        pass
+        # implement your own list of edges and nodes
+        self.edges = []
+        self.nodes = []
 
     def adjacent(self, node_1, node_2):
         pass
@@ -124,9 +144,6 @@ class ObjectOriented(object):
         pass
 
     def remove_edge(self, edge):
-        pass
-
-    def distance(self, node_1, node_2):
         pass
 
     def get_node(self, node_data):

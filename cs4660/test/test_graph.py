@@ -5,13 +5,20 @@ import unittest
 from graph import graph
 
 class TestNode(unittest.TestCase):
+    """TestNode tests node implementation"""
     def test_node_comparison(self):
+        """Test node comparison"""
         self.assertEqual(graph.Node(1), graph.Node(1))
 class TestEdge(unittest.TestCase):
+    """TestEdge tests edge implementation"""
     def test_edge_comparison(self):
-        self.assertEqual(graph.Edge(graph.Node(1), graph.Node(2), 1), graph.Edge(graph.Node(1), graph.Node(2), 1))
+        """Test edge comparison"""
+        self.assertEqual(
+            graph.Edge(graph.Node(1), graph.Node(2), 1),
+            graph.Edge(graph.Node(1), graph.Node(2), 1)
+        )
 
-class AdjacencyListTest(unittest.TestCase):
+class TestAdjacencyList(unittest.TestCase):
     def setUp(self):
         graph_1_path = './test/fixtures/graph-1.txt'
         graph_2_path = './test/fixtures/graph-2.txt'
