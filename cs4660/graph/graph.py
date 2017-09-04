@@ -6,7 +6,7 @@ A Graph has following methods:
 * adjacent(node_1, node_2)
     - returns true if node_1 and node_2 are directly connected or false otherwise
 * neighbors(node)
-    - returns all nodes that is adjacenct from node
+    - returns all nodes that is adjacency from node
 * add_node(node)
     - adds a new node to its internal data structure.
     - returns true if the node is added and false if the node already exists
@@ -19,9 +19,10 @@ A Graph has following methods:
 * remove_edge
     - remove an edge from its internal data structure
     - returns true if the edge is removed and false if the edge does not exist
-* get_node
-    - designed to be helper method to retrieve certain node by data
 """
+
+from io import open
+from operator import itemgetter
 
 def construct_graph_from_file(graph, file_path):
     """
@@ -44,9 +45,16 @@ class Node(object):
 
     def __str__(self):
         return 'Node({})'.format(self.data)
+    def __repr__(self):
+        return 'Node({})'.format(self.data)
 
     def __eq__(self, other_node):
         return self.data == other_node.data
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def __hash__(self):
+        return hash(self.data)
 
 class Edge(object):
     """Edge represents basic unit of graph connecting between two edges"""
@@ -56,9 +64,16 @@ class Edge(object):
         self.weight = weight
     def __str__(self):
         return 'Edge(from {}, to {}, weight {})'.format(self.from_node, self.to_node, self.weight)
+    def __repr__(self):
+        return 'Edge(from {}, to {}, weight {})'.format(self.from_node, self.to_node, self.weight)
 
     def __eq__(self, other_node):
         return self.from_node == other_node.from_node and self.to_node == other_node.to_node and self.weight == other_node.weight
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def __hash__(self):
+        return hash((self.from_node, self.to_node, self.weight))
 
 
 class AdjacencyList(object):
@@ -88,9 +103,6 @@ class AdjacencyList(object):
     def remove_edge(self, edge):
         pass
 
-    def get_node(self, node_data):
-        pass
-
 class AdjacencyMatrix(object):
     def __init__(self):
         # adjacency_matrix should be a two dimensions array of numbers that
@@ -118,7 +130,8 @@ class AdjacencyMatrix(object):
     def remove_edge(self, edge):
         pass
 
-    def get_node(self, node_data):
+    def __get_node_index(self, node):
+        """helper method to find node index"""
         pass
 
 class ObjectOriented(object):
@@ -146,5 +159,3 @@ class ObjectOriented(object):
     def remove_edge(self, edge):
         pass
 
-    def get_node(self, node_data):
-        pass

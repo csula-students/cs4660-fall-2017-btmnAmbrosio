@@ -19,6 +19,7 @@ class TestEdge(unittest.TestCase):
         )
 
 class TestAdjacencyList(unittest.TestCase):
+    """Tests adjacency list implementation"""
     def setUp(self):
         graph_1_path = './test/fixtures/graph-1.txt'
         graph_2_path = './test/fixtures/graph-2.txt'
@@ -63,7 +64,7 @@ class TestAdjacencyList(unittest.TestCase):
     def test_add_edge(self):
         self.assertEqual(False, self.graph_1.adjacent(graph.Node(1), graph.Node(4)))
 
-        self.assertEqual(True, self.graph_1.add_edge(graph.Edge(graph.Node(1), graph.Node(6), 1)))
+        self.assertEqual(True, self.graph_1.add_edge(graph.Edge(graph.Node(1), graph.Node(4), 1)))
         self.assertEqual([graph.Node(2),graph.Node(3),graph.Node(4)], self.graph_1.neighbors(graph.Node(1)))
         self.assertEqual(True, self.graph_1.adjacent(graph.Node(1), graph.Node(4)))
 
@@ -122,7 +123,7 @@ class TestAdjacencyMatrix(unittest.TestCase):
     def test_add_edge(self):
         self.assertEqual(False, self.graph_1.adjacent(graph.Node(1), graph.Node(4)))
 
-        self.assertEqual(True, self.graph_1.add_edge(graph.Edge(graph.Node(1), graph.Node(6), 1)))
+        self.assertEqual(True, self.graph_1.add_edge(graph.Edge(graph.Node(1), graph.Node(4), 1)))
         self.assertEqual([graph.Node(2),graph.Node(3),graph.Node(4)], self.graph_1.neighbors(graph.Node(1)))
         self.assertEqual(True, self.graph_1.adjacent(graph.Node(1), graph.Node(4)))
 
@@ -181,7 +182,7 @@ class TestObjectOriented(unittest.TestCase):
     def test_add_edge(self):
         self.assertEqual(False, self.graph_1.adjacent(graph.Node(1), graph.Node(4)))
 
-        self.assertEqual(True, self.graph_1.add_edge(graph.Edge(graph.Node(1), graph.Node(6), 1)))
+        self.assertEqual(True, self.graph_1.add_edge(graph.Edge(graph.Node(1), graph.Node(4), 1)))
         self.assertEqual([graph.Node(2),graph.Node(3),graph.Node(4)], self.graph_1.neighbors(graph.Node(1)))
         self.assertEqual(True, self.graph_1.adjacent(graph.Node(1), graph.Node(4)))
 
