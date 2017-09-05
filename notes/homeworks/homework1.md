@@ -2,7 +2,7 @@
 
 ## Due Date Time
 
-### 09/16/2017 Midnight (23:59:59)
+### 09/23/2017 Midnight (23:59:59)
 
 ## Performance Measure
 
@@ -25,19 +25,30 @@
 
 In this homework, you will start your assignment just like exercise before. You
 will need to read from file, parse information line by line and store them
-correctly. Eventually, you will implement methods to use these variables.
-
-You will need to implement/modify three classes (AdjancencyList,
-AdjancencyMatrix & ObjectOriented) under `graphes.py`.
+correctly. Next, you will implement methods to use these data in the graph
+classes (AdjacencyList, AdjacencyMatrix & ObjectOriented).
 
 In these three classes, you will be implementing similar methods for graph
 (e.g. `adjacent`, `neighbors` or `addNode` ... etc.) but with different
-underlying data structure.
+underlying data structure (see [course note on knowledge representation][1]).
 
-Please review the note from knowledge representation for theoretical differences
-of these three ways of representing graph.
+## Tasks
 
-## Input format
+- [ ] Understand input file format
+- [ ] Implement `construct_graph_from_file` method
+- [ ] Implement `add_node` and `add_edge` method to confirm `construct_graph_file` is working
+- [ ] Implement each graph representation separately
+    - [ ] Implement `adjacent` method
+    - [ ] Implement `neighbors` method
+    - [ ] Implement `remove_node` method
+    - [ ] Implement `remove_edge` method
+
+> Tip: you can run `python -m unittest test.test_graph.TestAdjacencyMatrix` to
+> to test individual graph representation
+
+### Input format
+
+The starting point for the homework is by looking at the input file like below:
 
 ```
 4
@@ -47,15 +58,21 @@ of these three ways of representing graph.
 3:1:2
 ```
 
-First line is the total number of nodes.
+First line is *the total number of nodes* while each node contains the number
+data as simplification of actual node.
 
-> In this homework, we will create node with unique id starting from 0  
+> In this homework, we will create node with unique id starting from 0
 > In other word, if we have four nodes; they are node 0, 1, 2, 3
 
-Starting from second line, you will get `{fromNode}:{toNode}:{value}` for each
-edge (line).
+Starting from second line, you will get format of `{fromNode}:{toNode}:{value}`
+for each line representing an edge. From second line and onward, the program
+should parse the line and add such edge back to the graph like pseudocode below:
 
-Your job is to parse these lines of edges and add them into graph.
+```
+for line in each_line:
+    edge = parse_line_to_edge(line)
+    graph.add_edge(edge)
+```
 
 ## Bonus
 
@@ -70,3 +87,5 @@ actions, transition model, goal test, and path cost)
 is it deterministic or stochastic, is it discrete or continuous, is it benign or
 adversarial?
 
+
+[1]: ../graph-representation.md
