@@ -88,4 +88,4 @@ is it deterministic or stochastic, is it discrete or continuous, is it benign or
 adversarial?
 
 
-[1]: ../graph-representation.md
+[1]: ../graph-representation.md#3-ways-to-represent-graph-in-programming
