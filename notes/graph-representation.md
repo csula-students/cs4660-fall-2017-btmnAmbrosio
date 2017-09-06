@@ -32,15 +32,15 @@ For example, knowing data structure can help you to:
 * Manage complexity and make your programs easier to follow
 * Build high-performance, memory-efficient programs
 
-Using myself at work for example, when I need to improve performance of the
+Using my work experience in Edlio, when I need to improve performance of the
 legacy system. I need to do some runtime analysis and its data structure usage.
-It is confusing when the legacy program doesn't use any data structure nor
-implement any common algorithm or patterns. It's extremely hard to read and
-understand thus hard to maintain.
+It is very confusing when the legacy program doesn't use any data structure nor
+implement any common algorithm or design patterns. In other word, such legacy
+code is extremely hard to read and to understand thus also hard to maintain.
 
 In order to learn about the data structure, we will be going through some
-implementation of them together. And you will get to implement the core data
-structure -- Graph -- yourself!
+underlying implementation of them. Then, you can apply the learning further
+to implement the central data structure to many search algorithms -- **Graph**.
 
 ### What are data structure?
 
@@ -149,101 +149,87 @@ From here, we will be going over some basic implementation of data structure. St
 
 #### List
 
-```js
-class List {
-  constructor() {
-    this.memory = [];
-    // we store the length separately because in real life
-    // the "memory" doesn't have a length you can read from
-    this.length = 0;
-  }
+```python
+class List(object):
+  def __init__(self):
+    self.memory = []
+    # we store the length separately because in real life
+    # the "memory" doesn't have a length you can read from
+    self.length = 0
 
-  get(address) {
-    return this.memory[address];
-  }
+  def get(self, address):
+    return self.memory[address]
 
-  push(value) {
-    this.memory[this.length] = value;
-    this.length ++;
-  }
+  def push(self, value):
+    self.memory[self.length] = value
+    self.length ++
 
-  pop() {
-    if (this.length === 0) return;
+  def pop(self):
+    if (self.length === 0) return
 
-    var lastAddress = this.length - 1;
-    var value = this.memory[lastAddress];
-    delete this.memory[lastAddress];
-    this.length --;
+    lastAddress = self.length - 1
+    value = self.memory[lastAddress]
+    self.memory.pop(lastAddress)
+    self.length --
 
-    return value;
-  }
+    return value
 
-  // push item to beginning of the list
-  unshift(value) {
-    var previous = value;
+  def unshift(self, value):
+    # push item to beginning of the list
+    previous = value
 
-    for (var address = 0; address < this.length; address ++) {
-      var current = this.memory[address];
-      this.memory[address] = previous;
-      previous = current;
-    }
+    # use enumerate to loop with index (address)
+    for address, _ in enumerate(self.memory):
+      current = self.memory[address]
+      self.memory[address] = previous
+      previous = current
 
-    this.memory[this.length] = previous;
-    this.length++;
-  }
+    self.memory[self.length] = previous
+    this.length++
 
-  // pop first item out of list
-  shift() {
-    if (this.length === 0) return;
+  def shift(self):
+    # pop first item out of list
+    if (self.length === 0) return
 
-    var value = this.memory[0];
+    value = self.memory[0]
 
-    for (var address = 0; address < this.length; address ++) {
-      this.memory[address] = this.memory[address + 1];
-    }
+    # use enumerate to loop with index (address)
+    for address, _ in enumerate(self.memory):
+      self.memory[address] = self.memory[address + 1]
 
-    delete.this.memory[this.length - 1];
-    this.length --;
-  }
+    self.memory.pop(this.length - 1)
+    self.length --
 
-  return value;
+    return value
 }
 ```
 
 #### Hash table
 
-```js
-class HashTable {
-  constructor() {
-    this.memory = [];
-  }
+```python
+class HashTable(object):
+  def __init__(self):
+    self.memory = []
 
-  hashKey(key) {
-    var hash = 0;
-    for (var index = 0; index < key.length; index ++) {
-      var code = key.charCodeAt(index);
-      // yay, magic!
-      hash = ((hash << 5) - hash) + code | 0;
-    }
-    return hash;
-  }
+  def hashKey(self, key):
+    hash = 0
+    for address, _ in enumerate(self.memory):
+    for c in some_string:
+      hash = 101 * hash + ord(c)
+    return hash
 
-  get(key) {
-    var address = this.hashKey(key);
-    return this.memory[address];
-  }
+  def get(self, key):
+    address = self.hashKey(key)
+    return self.memory[address]
 
-  set(key, value) {
-    var address = this.hashKey(key);
-    this.memory[address] = value;
-  }
+  def set(self, key, value):
+    address = self.hashKey(key)
+    self.memory[address] = value
 
-  remove(key) {
-    var address = this.hashKey(key);
-    if (this.memory[address]) {
-      delete this.memory[address];
-    }
-  }
+  def remove(self, key):
+    address = self.hashKey(key)
+    if address in this.memory[address]:
+      this.memory.pop(address)
 }
 ```
 
@@ -290,7 +276,7 @@ That is enough of the data structure and why we need to learn them.
 
 We want to talk about graph and understand the different terminologies of Graph
 
-![](imgs/graph_diagram.png)
+![Graph diagram](imgs/graph_diagram.png)
 
 * Node (Sometimes called Vertex)
 * Edge
