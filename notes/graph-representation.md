@@ -151,120 +151,119 @@ From here, we will be going over some basic implementation of data structure. St
 
 ```python
 class List(object):
-  def __init__(self):
-    self.memory = []
-    # we store the length separately because in real life
-    # the "memory" doesn't have a length you can read from
-    self.length = 0
+    def __init__(self):
+        self.memory = []
+        # we store the length separately because in real life
+        # the "memory" doesn't have a length you can read from
+        self.length = 0
 
-  def get(self, address):
-    return self.memory[address]
+    def get(self, address):
+        return self.memory[address]
 
-  def push(self, value):
-    self.memory[self.length] = value
-    self.length ++
+    def push(self, value):
+        self.memory.insert(self.length, value)
+        self.length += 1
 
-  def pop(self):
-    if (self.length === 0) return
+    def pop(self):
+        if self.length == 0:
+            return
 
-    lastAddress = self.length - 1
-    value = self.memory[lastAddress]
-    self.memory.pop(lastAddress)
-    self.length --
+        lastAddress = self.length - 1
+        value = self.memory[lastAddress]
+        del self.memory[lastAddress]
+        self.length -= 1
 
-    return value
+        return value
 
-  def unshift(self, value):
-    # push item to beginning of the list
-    previous = value
+    def unshift(self, value):
+        # push item to beginning of the list
+        previous = value
 
-    # use enumerate to loop with index (address)
-    for address, _ in enumerate(self.memory):
-      current = self.memory[address]
-      self.memory[address] = previous
-      previous = current
+        # use enumerate to loop with index (address)
+        for address, _ in enumerate(self.memory):
+            current = self.memory[address]
+            self.memory[address] = previous
+            previous = current
 
-    self.memory[self.length] = previous
-    this.length++
+        self.memory.insert(self.length, previous)
+        self.length += 1
 
-  def shift(self):
-    # pop first item out of list
-    if (self.length === 0) return
+    def shift(self):
+        # pop first item out of list
+        if self.length == 0:
+            return
 
-    value = self.memory[0]
+        value = self.memory[0]
 
-    # use enumerate to loop with index (address)
-    for address, _ in enumerate(self.memory):
-      self.memory[address] = self.memory[address + 1]
+        # use enumerate to loop with index (address)
+        for address, _ in enumerate(self.memory):
+            self.memory[address] = self.memory[address + 1]
 
-    self.memory.pop(this.length - 1)
-    self.length --
+        del self.memory[self.length - 1]
+        self.length -= 1
 
-    return value
-}
+        return value
 ```
 
 #### Hash table
 
 ```python
 class HashTable(object):
-  def __init__(self):
-    self.memory = []
+    def __init__(self):
+        self.memory = {}
 
-  def hashKey(self, key):
-    hash = 0
-    for address, _ in enumerate(self.memory):
-    for c in some_string:
-      hash = 101 * hash + ord(c)
-    return hash
+    def hashKey(self, key):
+        hash_token = 0
+        for character in key:
+            hash_token = 101 * hash_token + ord(character)
+        return hash_token
 
-  def get(self, key):
-    address = self.hashKey(key)
-    return self.memory[address]
+    def get(self, key):
+        address = self.hashKey(key)
+        return self.memory[address]
 
-  def set(self, key, value):
-    address = self.hashKey(key)
-    self.memory[address] = value
+    def set(self, key, value):
+        address = self.hashKey(key)
+        self.memory[address] = value
 
-  def remove(self, key):
-    address = self.hashKey(key)
-    if address in this.memory[address]:
-      this.memory.pop(address)
-}
+    def remove(self, key):
+        address = self.hashKey(key)
+        if address in self.memory:
+            del self.memory[address]
 ```
 
 #### Graph
 
 ```js
 class Graph {
-  constructor() {
-    // to demonstrate graph, we will be using objected oriented approach
-    this.nodes = [];
-  }
-
-  addNode(value) {
-    this.nodes.push({
-      value: value,
-      lines: []
-    });
-  }
-
-  find(value) {
-    return this.nodes.find(function(node) {
-      return node.value === value;
-    });
-  }
-
-  addLine(startValue, endValue) {
-    var startNode = this.find(startValue);
-    var endNode = this.find(endValue);
-
-    if (!startNode || !endNode) {
-      throw new Error('Both nodes need to exist');
+    constructor() {
+        // to demonstrate graph, we will be using objected oriented approach
+        this.nodes = [];
     }
 
-    startNode.lines.push(endNode);
-  }
+    addNode(value) {
+        this.nodes.push({
+            value: value,
+            lines: []
+        });
+    }
+
+    find(value) {
+        return this.nodes.find(function(node) {
+            return node.value === value;
+        });
+    }
+
+    addLine(startValue, endValue) {
+        var startNode = this.find(startValue);
+        var endNode = this.find(endValue);
+
+        if (!startNode || !endNode) {
+            throw new Error('Both nodes need to exist');
+        }
+
+        startNode.lines.push(endNode);
+    }
 }
 ```
 
@@ -401,35 +400,6 @@ This leads to a definition of a rational agent:
 For each possible percept sequence, a rational agent should select an action that
 is expected to maximize its performance measure, given the evidence provided by
 the percept sequence and whatever built-in knowledge the agent has.
-
-### Omniscience
-
-Rationality and omniscience are different. An omniscience agent knows the actual
-outcome of its actions and can act accordingly; but omniscience is impossible
-in reality.
-
-In other word, with omniscience agent, you can perform **perfect** sequence of
-actions because you know the outcome.
-
-Rational agent, however, maximizes the expected performance, while perfection
-maximizes actual performance.
-
-Our definition earlier about rational agent doesn't require omniscience. We must
-ensure that we haven't inadvertently allowed the agent to engage in decidedly
-underintelligent activities. For example, cross a busy road without looking!
-
-Doing actions in order to modify future percepts -- sometimes called information
-gathering -- is important part of rationality.
-
-Our definition of rational agent also requires a rational agent not only to gather
-information but also to learn as much as possible from what it perceives. In other
-word, agent's initial configuration could reflect some prior knowledge of the
-environment, but as the agent gains experience this may be modified and augmented.
-
-To the extent that an agent relies on the prior knowledge of its designer rather
-than its own percepts, we say that the agent lacks autonomy. An agent should be
-autonomous -- it should learn what it can to compensate for partial or incorrect
-prior knowledge.
 
 ### Structure of Agents
 
@@ -795,11 +765,6 @@ space -- LEFT, RIGHT, UP or DOWN.
 2. Fail and cry
 3. Fix
 4. Rinse and repeat
-
-### [Design Pattern][design-pattern] in action
-
-* Strategy pattern (Representation interface)
-* Factory pattern (again Representation interface with static `of` method)
 
 ### [Homework 1](homeworks/homework1.md)
 
