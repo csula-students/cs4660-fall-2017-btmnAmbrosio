@@ -15,12 +15,7 @@ class SimpleFile(object):
 
         f.close()
 
-        # for rows in self.numbers:
-        #     for nums in rows:
-        #         nums= int(nums)
 
-        # from builtins import map
-        # self.numbers = list(map(int,self.numbers))
 
 
         """
