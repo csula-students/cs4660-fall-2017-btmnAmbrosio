@@ -1,27 +1,26 @@
 """Files tests simple file read related operations"""
-
+from __future__ import division
 class SimpleFile(object):
     """SimpleFile tests using file read api to do some simple math"""
+    
     def __init__(self, file_path):
+        
         self.numbers = []
         from io import open 
         f = open(file_path, encoding='utf-8')
         for rows in f:
             self.numbers.append(rows.split())
-        
+
+        self.numbers=[[int(y) for y in x] for x in self.numbers]
+
+        f.close()
+
         # for rows in self.numbers:
         #     for nums in rows:
         #         nums= int(nums)
 
         # from builtins import map
         # self.numbers = list(map(int,self.numbers))
-
-        self.numbers=[[int(y) for y in x] for x in self.numbers]
-
-        
-        
-        f.close()
-
 
 
         """
@@ -35,7 +34,8 @@ class SimpleFile(object):
         with zero)
         """
         mean = 0.0
-        mean = (sum(self.numbers[line_number])/(len(self.numbers[line_number])))
+        mean = (sum(self.numbers[line_number]) / (len(self.numbers[line_number])))
+        print(mean)
         return mean
 
         
