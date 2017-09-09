@@ -35,7 +35,7 @@ class SimpleFile(object):
         with zero)
         """
         mean = 0.0
-        mean = (sum(self.numbers[line_number])//(len(self.numbers[line_number])))
+        mean = (sum(self.numbers[line_number])/(len(self.numbers[line_number])))
         return mean
 
         
