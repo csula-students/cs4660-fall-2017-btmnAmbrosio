@@ -6,6 +6,10 @@
 * Submit Pull Request
 * CSNS txt file submission like below
 
+## Solution
+
+https://github.com/csula-students/cs4660-fall-2017-rcliao/pull/4
+
 ```
 Pull request URL: https://github.com/csula-students/cs4660-fall-2017-rcliao/pull/3
 ```
