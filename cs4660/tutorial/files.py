@@ -34,7 +34,7 @@ class SimpleFile(object):
         get_mean retrieves the mean value of the list by line_number (starts
         with zero)
         """
-        return (sum(self.numbers[line_number])/(len(self.numbers[line_number])))
+        return (sum(self.numbers[line_number])//(len(self.numbers[line_number])))
 
         
 
