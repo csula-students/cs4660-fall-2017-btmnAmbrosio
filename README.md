@@ -48,8 +48,16 @@ python -m unittest discover
 * [Syllabus](SYLLABUS.md)
 * [Course chatroom](https://csula-cs4660-fall2017.slack.com) -- you will only  
 be able to get into chatroom if you are invited already (see CSNS)
+* [Python 2 and 3 Compatibility Cheatsheet](http://python-future.org/compatible_idioms.html)
 
 ## Recommended reading
+
+### Python Related
+
+* [Google Python Tutorial](https://developers.google.com/edu/python/)
+* [The Incredible Growth of Python by StackOverflow](https://stackoverflow.blog/2017/09/06/incredible-growth-python/)
+
+### Recent AI News
 
 * https://blog.openai.com/dota-2/
 * https://deepmind.com/blog/deepmind-and-blizzard-open-starcraft-ii-ai-research-environment/
