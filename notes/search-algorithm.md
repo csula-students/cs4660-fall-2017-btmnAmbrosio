@@ -8,50 +8,57 @@
 * Recursion Review
 * BFS (Breadth First Search)
 
-## Metrics/Desired Outcomes
+## Performance Measure
 
 * Understanding BFS/DFS
 * Able to implement BFS/DFS
-
-### Recap of Graph
-
-* Graph
-* Node
-* Edge
-
-> Graph is an abstract data structure you can use to traverse and reason behind
-certain problem.
 
 ### Examples
 
 * Map
 * Maze
 * Game Tree
-* http://visualgo.net/dfsbfs.html
+* https://visualgo.net/en/dfsbfs
 * http://qiao.github.io/PathFinding.js/visual/
 
 > We have data now, how do we process it to produce a useful output?
 
 ### Searching for solutions
 
-Having formulated some problems, we now need to solve them. A solution is an
-action sequence, so search algorithms work by considering various possible action
-sequences. The possible action sequences starting at the initial state form a
-search tree with the initial state at the root; the branches are actions and the
-nodes correspond to states in the state space of the problem.
+In last lecture, we ended with **formulating problems** starting by defining
+5 components:
 
-Note that the state tree may or may not be seen as whole static tree at the
-beginning. This implies sometimes you will need to expand the current state; that
-is, applying each legal action to the current state, thereby generating a new set
-of states.
+* States
+* Initial state
+* Actions
+* Transition model
+* Goal test
+* Path cost
 
-This is the essence of search -- following one option now and putting the other
+With problems formulated, we now need a way to solve these problems. We can
+solve the problem by finding a solution; and a solution is often an action
+sequence going from the initial state to the goal. To find such action sequence,
+we will be using **search algorithms**. Search algorithm will find a path between
+the from state to the to state while some finds the optimal path some may not.
+Using this path, we can form an action sequence as a solution to our problem.
+
+The possible action sequence starting at the initial state forms a tree structure
+with the initial state at the root; the branches are actions and the nodes
+correspond to states in the state space of the problem. Note that the state
+tree may or may not be seen as whole at the beginning. This implies sometimes
+you will need to expand the current state based on its possible actions; that
+is, applying each legal action to the current state, thereby generating a new
+set of states.
+
+This is the essence of search -- following one option and putting the other
 aside for later, in case the first choice does not lead to a solution.
 
 Consider the Graph structure we formed from the Map, nodes without children in the
 tree are called leaf node or frontier. (some called this as open list).
 
-The process of expanding nodes on the frontier continues until either a solution is found or there are no more states to expand. The process of choose state to expand next -- the so-called **search strategy**.
+The process of expanding nodes on the frontier continues until either a
+solution is found or there are no more states to expand. The process of choose
+state to expand next -- the so-called **search strategy**.
 
 **Repeated paths** if not handle correctly will cause your problem search algorithm
 to end up with going back and forth in the same states. And often your search
@@ -61,6 +68,27 @@ We will talk about a general GraphSearch method below with handling repeated pat
 handling:
 
 ```js
+/*
+    problem structure like below:
+
+    {
+        states: [],
+        initialState: states[0],
+        actions: function (state) {
+            return [] // list of possible actions based on the state
+        },
+        transition: function (state, action) {
+            return newState; // new state
+        },
+        isGoal: function (state) {
+            return 1; // 1 if it is ideal goal, -1 if bad goal and 0 otherwise
+        },
+        pathCost: function (state1, state2) {
+            return 42; // some path cost running this way
+        }
+    }
+*/
+
 // return a solution (action sequence) or failure
 function GraphSearch(problem) {
   // initialize frontier using the initial state of the problem
@@ -95,12 +123,12 @@ function GraphSearch(problem) {
 ```
 
 To continue the example, we will be finding a path in the rectangular grid later.
-You will be coding a path finding algorithm at the end of class :D!
+You will be coding a path finding algorithm at the end of class :D
 
 ### Infrastructure for search algorithm
 
 Search algorithms require a data structure to keep track of the search tree that
-is being constructed. For each node n of the tree, we have a structure that contains
+is being constructed. For each node `n` of the tree, we have a structure that contains
 four components:
 
 * n.state: the state in the state space to which the node corresponds
@@ -124,11 +152,11 @@ function childNode(problem, parent, action) {
 
 Now we have nodes, we will need to put them into frontier somehow. To do so, we
 will need to pick and choose some data structure for frontier to store. The
-appropriate data structure for frontier is a queue.
+appropriate data structure for frontier is a `queue`.
 
-Now, here is a homework for you, review queue, stack and priority queue (on how
-they work and how to implement them in Java). As you will need those data structure
-in most of the algorithms we implement later.
+Now, here is a homework for you: review queue, stack and priority queue (on how
+they work and how to user them in Python). As you will need those data structure
+in many of the search algorithms.
 
 ### Measuring problem-solving performance
 
@@ -149,17 +177,15 @@ additional information about the states beyond the provided in the problem defin
 
 On the other hand, strategies that know whether one non-goal state is "more promising"
 than another is called informed search or heuristic search strategies, which
-we will cover later.
+we will cover next lecture.
 
 ### Depth First Search (DFS)
 
-![DFS](imgs/Depth-First-Search.gif)
+![Depth first search animated gif](imgs/Depth-First-Search.gif)
 
 #### Pseudocode
 
 ```javascript
-// accumlator, return, stacks
-
 DFS(startNode);
 
 function DFS(current) {
@@ -234,7 +260,4 @@ function BFS(v) {
 
 ## Learning
 
-1. Solve https://www.hackerrank.com/challenges/saveprincess
-2. ~~Implement Game interface~~
-
-> Due to time constraint, I decide to remove the game interface as part of learning from this class; we will talk about it when I talk about Dijkstra algorithm. Stay Tuned!
+* Solve https://www.hackerrank.com/challenges/saveprincess
