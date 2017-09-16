@@ -182,7 +182,7 @@ simplify the environments down to four types:
 * Discrete vs continuous
     * Number of states in games is countable (discrete) and not-countable (continuous)
 * Benign vs adversarial
-    * Environment goes against you (benign) like Chess (environment -- your opponent -- is trying to defeat you)
+    * Environment goes against you (adversarial) like Chess (environment -- your opponent -- is trying to defeat you)
     * Or environment is just there (like weather effect for self-driving car)
 
 #### Summary
