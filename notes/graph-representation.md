@@ -319,8 +319,8 @@ Graph has different types such as below:
   * ![](imgs/graph-weight.png)
 * Dense/Sparse
 
-> Dense graph: graph has a lot more edges than vertices (defined as `|E| = O(|V|)` where |E| is number of edges and |V| is number of vertices)  
-> Sparse graph: graph has relative fewer edges than vertices (defined as `|E| = Θ(|V^2|)`)
+> Dense graph: graph has a lot more edges than vertices (defined as `|E| = Θ(|V^2|)` where |E| is number of edges and |V| is number of vertices)  
+> Sparse graph: graph has relative fewer edges than vertices (defined as `|E| = O(|V|)`)
 
 ### Graph as Abstract Data Structure
 
