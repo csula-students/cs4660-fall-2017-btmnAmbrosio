@@ -32,15 +32,15 @@ For example, knowing data structure can help you to:
 * Manage complexity and make your programs easier to follow
 * Build high-performance, memory-efficient programs
 
-Using myself at work for example, when I need to improve performance of the
+Using my work experience in Edlio, when I need to improve performance of the
 legacy system. I need to do some runtime analysis and its data structure usage.
-It is confusing when the legacy program doesn't use any data structure nor
-implement any common algorithm or patterns. It's extremely hard to read and
-understand thus hard to maintain.
+It is very confusing when the legacy program doesn't use any data structure nor
+implement any common algorithm or design patterns. In other word, such legacy
+code is extremely hard to read and to understand thus also hard to maintain.
 
 In order to learn about the data structure, we will be going through some
-implementation of them together. And you will get to implement the core data
-structure -- Graph -- yourself!
+underlying implementation of them. Then, you can apply the learning further
+to implement the central data structure to many search algorithms -- **Graph**.
 
 ### What are data structure?
 
@@ -149,136 +149,121 @@ From here, we will be going over some basic implementation of data structure. St
 
 #### List
 
-```js
-class List {
-  constructor() {
-    this.memory = [];
-    // we store the length separately because in real life
-    // the "memory" doesn't have a length you can read from
-    this.length = 0;
-  }
+```python
+class List(object):
+    def __init__(self):
+        self.memory = []
+        # we store the length separately because in real life
+        # the "memory" doesn't have a length you can read from
+        self.length = 0
 
-  get(address) {
-    return this.memory[address];
-  }
+    def get(self, address):
+        return self.memory[address]
 
-  push(value) {
-    this.memory[this.length] = value;
-    this.length ++;
-  }
+    def push(self, value):
+        self.memory.insert(self.length, value)
+        self.length += 1
 
-  pop() {
-    if (this.length === 0) return;
+    def pop(self):
+        if self.length == 0:
+            return
 
-    var lastAddress = this.length - 1;
-    var value = this.memory[lastAddress];
-    delete this.memory[lastAddress];
-    this.length --;
+        lastAddress = self.length - 1
+        value = self.memory[lastAddress]
+        del self.memory[lastAddress]
+        self.length -= 1
 
-    return value;
-  }
+        return value
 
-  // push item to beginning of the list
-  unshift(value) {
-    var previous = value;
+    def unshift(self, value):
+        # push item to beginning of the list
+        previous = value
 
-    for (var address = 0; address < this.length; address ++) {
-      var current = this.memory[address];
-      this.memory[address] = previous;
-      previous = current;
-    }
+        # use enumerate to loop with index (address)
+        for address, _ in enumerate(self.memory):
+            current = self.memory[address]
+            self.memory[address] = previous
+            previous = current
 
-    this.memory[this.length] = previous;
-    this.length++;
-  }
+        self.memory.insert(self.length, previous)
+        self.length += 1
 
-  // pop first item out of list
-  shift() {
-    if (this.length === 0) return;
+    def shift(self):
+        # pop first item out of list
+        if self.length == 0:
+            return
 
-    var value = this.memory[0];
+        value = self.memory[0]
 
-    for (var address = 0; address < this.length; address ++) {
-      this.memory[address] = this.memory[address + 1];
-    }
+        # use enumerate to loop with index (address)
+        for address, _ in enumerate(self.memory):
+            self.memory[address] = self.memory[address + 1]
 
-    delete.this.memory[this.length - 1];
-    this.length --;
-  }
+        del self.memory[self.length - 1]
+        self.length -= 1
 
-  return value;
-}
+        return value
 ```
 
 #### Hash table
 
-```js
-class HashTable {
-  constructor() {
-    this.memory = [];
-  }
+```python
+class HashTable(object):
+    def __init__(self):
+        self.memory = {}
 
-  hashKey(key) {
-    var hash = 0;
-    for (var index = 0; index < key.length; index ++) {
-      var code = key.charCodeAt(index);
-      // yay, magic!
-      hash = ((hash << 5) - hash) + code | 0;
-    }
-    return hash;
-  }
+    def hashKey(self, key):
+        hash_token = 0
+        for character in key:
+            hash_token = 101 * hash_token + ord(character)
+        return hash_token
 
-  get(key) {
-    var address = this.hashKey(key);
-    return this.memory[address];
-  }
+    def get(self, key):
+        address = self.hashKey(key)
+        return self.memory[address]
 
-  set(key, value) {
-    var address = this.hashKey(key);
-    this.memory[address] = value;
-  }
+    def set(self, key, value):
+        address = self.hashKey(key)
+        self.memory[address] = value
 
-  remove(key) {
-    var address = this.hashKey(key);
-    if (this.memory[address]) {
-      delete this.memory[address];
-    }
-  }
-}
+    def remove(self, key):
+        address = self.hashKey(key)
+        if address in self.memory:
+            del self.memory[address]
 ```
 
 #### Graph
 
 ```js
 class Graph {
-  constructor() {
-    // to demonstrate graph, we will be using objected oriented approach
-    this.nodes = [];
-  }
-
-  addNode(value) {
-    this.nodes.push({
-      value: value,
-      lines: []
-    });
-  }
-
-  find(value) {
-    return this.nodes.find(function(node) {
-      return node.value === value;
-    });
-  }
-
-  addLine(startValue, endValue) {
-    var startNode = this.find(startValue);
-    var endNode = this.find(endValue);
-
-    if (!startNode || !endNode) {
-      throw new Error('Both nodes need to exist');
+    constructor() {
+        // to demonstrate graph, we will be using objected oriented approach
+        this.nodes = [];
     }
 
-    startNode.lines.push(endNode);
-  }
+    addNode(value) {
+        this.nodes.push({
+            value: value,
+            lines: []
+        });
+    }
+
+    find(value) {
+        return this.nodes.find(function(node) {
+            return node.value === value;
+        });
+    }
+
+    addLine(startValue, endValue) {
+        var startNode = this.find(startValue);
+        var endNode = this.find(endValue);
+
+        if (!startNode || !endNode) {
+            throw new Error('Both nodes need to exist');
+        }
+
+        startNode.lines.push(endNode);
+    }
 }
 ```
 
@@ -290,7 +275,7 @@ That is enough of the data structure and why we need to learn them.
 
 We want to talk about graph and understand the different terminologies of Graph
 
-![](imgs/graph_diagram.png)
+![Graph diagram](imgs/graph_diagram.png)
 
 * Node (Sometimes called Vertex)
 * Edge
@@ -334,8 +319,8 @@ Graph has different types such as below:
   * ![](imgs/graph-weight.png)
 * Dense/Sparse
 
-> Dense graph: graph has a lot more edges than vertices (defined as `|E| = O(|V|)` where |E| is number of edges and |V| is number of vertices)  
-> Sparse graph: graph has relative fewer edges than vertices (defined as `|E| = Θ(|V^2|)`)
+> Dense graph: graph has a lot more edges than vertices (defined as `|E| = Θ(|V^2|)` where |E| is number of edges and |V| is number of vertices)  
+> Sparse graph: graph has relative fewer edges than vertices (defined as `|E| = O(|V|)`)
 
 ### Graph as Abstract Data Structure
 
@@ -415,35 +400,6 @@ This leads to a definition of a rational agent:
 For each possible percept sequence, a rational agent should select an action that
 is expected to maximize its performance measure, given the evidence provided by
 the percept sequence and whatever built-in knowledge the agent has.
-
-### Omniscience
-
-Rationality and omniscience are different. An omniscience agent knows the actual
-outcome of its actions and can act accordingly; but omniscience is impossible
-in reality.
-
-In other word, with omniscience agent, you can perform **perfect** sequence of
-actions because you know the outcome.
-
-Rational agent, however, maximizes the expected performance, while perfection
-maximizes actual performance.
-
-Our definition earlier about rational agent doesn't require omniscience. We must
-ensure that we haven't inadvertently allowed the agent to engage in decidedly
-underintelligent activities. For example, cross a busy road without looking!
-
-Doing actions in order to modify future percepts -- sometimes called information
-gathering -- is important part of rationality.
-
-Our definition of rational agent also requires a rational agent not only to gather
-information but also to learn as much as possible from what it perceives. In other
-word, agent's initial configuration could reflect some prior knowledge of the
-environment, but as the agent gains experience this may be modified and augmented.
-
-To the extent that an agent relies on the prior knowledge of its designer rather
-than its own percepts, we say that the agent lacks autonomy. An agent should be
-autonomous -- it should learn what it can to compensate for partial or incorrect
-prior knowledge.
 
 ### Structure of Agents
 
@@ -809,11 +765,6 @@ space -- LEFT, RIGHT, UP or DOWN.
 2. Fail and cry
 3. Fix
 4. Rinse and repeat
-
-### [Design Pattern][design-pattern] in action
-
-* Strategy pattern (Representation interface)
-* Factory pattern (again Representation interface with static `of` method)
 
 ### [Homework 1](homeworks/homework1.md)
 

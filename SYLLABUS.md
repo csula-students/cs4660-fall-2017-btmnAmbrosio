@@ -75,8 +75,8 @@ The schedule below is tentative and is subject to change.
 | 1  [08/26]         | [Introduction][1] | Set up environment |
 | 2  [09/02]         | [Intro to Python][2] |  |
 | 3  [09/09]         | [Graph representation][3] |  |
-| 4  [09/16]         | [BFS, DFS][4] | [Homework 1][10], Quiz 1 |
-| 5  [09/23]         | [Dijkstra search][5] |  |
+| 4  [09/16]         | [BFS, DFS][4] | Quiz 1 |
+| 5  [09/23]         | [Dijkstra search][5] | [Homework 1][10] |
 | 6  [09/30]         | [Heuristic search][6] |  |
 | 7  [10/07]         | [Adversarial search][7] |  |
 | 8  [10/14]         | [Monte Carlo Tree Search][8] | [Homework 2][11], Quiz 2 |

@@ -1,27 +1,64 @@
-## Python
+# Python
 
-Please install [Python 2](https://www.python.org/). Please just download 2.7 for this class not version 3.
+## Agenda
 
-> For Mac user, use `brew install python`  
+* Intro to Python
+* Importance of indentation
+* Variables and types
+* Control statements
+* Functions
+* Packages & Classes
+* Common data structures (list, dist)
+* Using built in packages - File I/O
+
+## Performance Measure
+
+* Comfortable doing Python programming
+* Python exercise
+
+## Installation Reminder
+
+Please install [Python](https://www.python.org/) prior to start following.
+
+> For Mac user, use `brew install python` to install Python 2 and
+> `brew install python3` to install Python 3
+
+### Why Python
 
 Python, one of the most common languages choice for Artificial Intelligence. Why?
 
-Many libraries are written in python. This includes machine learning libraries
-like [Sci-kit](http://scikit-learn.org/stable/), [NumPy](http://www.numpy.org/)
-or [Pandas](http://pandas.pydata.org/pandas-docs/stable/10min.html)
+Many Machine Learning libraries are written in Python. This includes 
+Machine Learning libraries like [Sci-kit](http://scikit-learn.org/stable/),
+[NumPy](http://www.numpy.org/),
+[Pandas](http://pandas.pydata.org/pandas-docs/stable/10min.html) or
+[OpenCV](http://docs.opencv.org/3.0-beta/doc/py_tutorials/py_tutorials.html)
 
-So why is Python popular?
+Moreover, there are several additional reasons why Python is popular language:
 
 * Easy to learn
 * Easy to get it up and running
 * Syntax is very close to pseudocode
 * Interpreted languages (have interpreter built in)
 
-In the following session, we will introduce python from the ground up.
+All in all, Python allows developers/scientists to develop quickly as its nature
+of the dynamic type language.
 
-### Syntax
+In following lecture, we will go over some of the basic tutorial of Python
+language and practice them in the TDD manner.
 
-Not like Java, python doesn't have bracket. Python uses **indentation** to detect code block.
+---
+
+Plus, you can always import antigravity!
+
+![import antigravity from XKCD comic](https://imgs.xkcd.com/comics/python.png)
+
+### Importance of Indentation
+
+Before we dive into the Python specific syntax, we need to talk about one very
+important aspect of Python -- indentation.
+
+Python, unlike Java, does not have bracket or semi-colon. Python uses 
+**indentation** to detect code block.
 
 What do I mean by indentation? Consider the following:
 
@@ -29,37 +66,55 @@ What do I mean by indentation? Consider the following:
 x = 1
 
 if x > 0:
-  print "x is positive"
+    print("x is positive")
+
+    print("and more print statement just to prove the indentation block works")
 ```
 
-Now when the print statement is not indented properly. It will not be executed in the if statement.
+When the print statement is not indented properly. It will not be executed
+when x is greater than zero.
 
-Therefore, it is recommended for you to display all the invisible characters in your favorite text editor.
+Therefore, it is highly recommended for you to display all the invisible characters
+(space or tab) in your favorite text editor or IDE.
 
-> Don't ask why your code doesn't work later because your code contain both hard tab and soft tab (4 spaces or 2 spaces)
+> Don't ask why your code doesn't work later because your code contains both
+> hard tab and soft tab (1 hard tab and 4 spaces)
+
+![5 Stages of Debugging](https://i.redd.it/7593yrkzhgiz.jpg)
+
+> Please! Showing invisible characters will help you to avoid the 5 stages of debugging
 
 ### Variables and types
 
-In python, to define variable, you don't need to specify types not like Java.
+From this section and onward, I'll assume you are already familiar with Java and
+build various knowledge based on what you've already known in Java to Python.
 
-In other word, you can simply assign variable just like below:
+To define a variable, you don't need to specify types not like Java.
+e.g. `int a = 3;` in Java vs `a =3` in Python
 
 ```python
-# Number
+# Numbers
 x = 1 + 1
+floatingNumber = 2 / 3
+dividedInt = 2 // 3
+modularInt = 2 % 3
+
 # Boolean (keep it in mind that first character is capitalized)
 t = True
+
 # String
 y = "Hello, world"
 z = "Hello\nworld!"
 multiline_string = """
-this is multiline string
-if you need to print out multiline
+this is multi-line string
+if you need to print out multi-line
 you may use three "
 """
+
 concat_str = "Hello" + "," + "world!"
+
 # You can treat word like list and get character(s) out this way
-y[1] # e
+y[1]   # e
 y[0:2] # He
 
 # List
@@ -75,19 +130,20 @@ len(li) # 3
 li = [[1, 2], [2, 3], [3, 4]]
 ```
 
-# Control flow
+### Control flow
 
 Control flows includes if, for, while and function.
 
 ```python
-# if statement doesn't need to be surrounded by parathesis
 x = 1
 
+# if statement doesn't need to be surrounded by parentheses
 if x > 0:
   print "x is positive"
 
 # for 
 li = [1, 2, 3]
+# like enhance for loop in Java
 for i in li:
   print i
 # range
@@ -111,21 +167,23 @@ for i in range(100):
 def f(x, y):
   return x + y
 
+# to call a function, same way as Java
 f(1, 2) # 3
 
-# python not like java can have default argument value
+# Python unlike Java can have default parameter value
 def g(x, y=1):
   return x + y
 
-g(1) #2
+g(1) # returns 2
 
-# when calling function, it can provide keyword as argument
 def h(x, y, z):
   print x
   print y
   print z
   return x + y - z
 
+# when calling function, it can provide keyword as argument
+# order can be any way you want to put
 h(y=2,x=6,z=10)
 
 # lambda
@@ -138,11 +196,11 @@ f(8) # 50
 # documentation for function
 def messy(z):
   """
-  this is a documentation example
+  this is a documentation example with multi-line string
   """
   return z + 42
 
-print messy.__doc__
+print(messy.__doc__)
 ```
 
 ### Data structure
@@ -170,31 +228,26 @@ print messy.__doc__
 stack = [3, 4, 5]
 stack.append(6)
 stack.append(7)
-stack
-[3, 4, 5, 6, 7]
-stack.pop()
-7
-stack
-[3, 4, 5, 6]
-stack.pop()
-6
-stack.pop()
-5
-stack
-[3, 4]
+stack # [3, 4, 5, 6, 7]
+stack.pop() # 7
+stack # [3, 4, 5, 6]
+stack.pop() # 6
+stack.pop() # 5
+stack # [3, 4]
 ```
 
 **List as queue**
 
 ```python
 from collections import deque
+
 queue = deque(["Eric", "John", "Michael"])
 queue.append("Terry")           # Terry arrives
 queue.append("Graham")          # Graham arrives
 queue.popleft()                 # The first to arrive now leaves
-'Eric'
+# 'Eric'
 queue.popleft()                 # The second to arrive now leaves
-'John'
+# 'John'
 queue                           # Remaining queue in order of arrival
 deque(['Michael', 'Terry', 'Graham'])
 ```
@@ -204,24 +257,65 @@ deque(['Michael', 'Terry', 'Graham'])
 * filter  
 ```python
 def f(x): return x % 3 == 0 or x % 5 == 0
-...
+
 filter(f, range(2, 25))
-[3, 5, 6, 9, 10, 12, 15, 18, 20, 21, 24]
+# [3, 5, 6, 9, 10, 12, 15, 18, 20, 21, 24]
 ```
 * map  
 ```python
 def cube(x): return x*x*x
-...
+
 map(cube, range(1, 11))
-[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]
+# [1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]
 ```
 * reduce  
 ```python
 seq = range(8)
 def add(x, y): return x+y
-...
+
 map(add, seq, seq)
-[0, 2, 4, 6, 8, 10, 12, 14]
+# [0, 2, 4, 6, 8, 10, 12, 14]
+
+# Python 2 and 3:
+from functools import reduce
+
+assert reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) == 1+2+3+4+5
+```
+
+Quite note on the methods above, they work in Python 2 only. To make the code
+works with Python 2 and 3:
+
+```python
+# Python 2 only:
+mynewlist = map(f, myoldlist)
+assert mynewlist == [f(x) for x in myoldlist]
+# Python 2 and 3: option 1
+# Idiomatic Py3, but inefficient on Py2
+mynewlist = list(map(f, myoldlist))
+assert mynewlist == [f(x) for x in myoldlist]
+# Python 2 and 3: option 2
+from builtins import map
+
+mynewlist = list(map(f, myoldlist))
+assert mynewlist == [f(x) for x in myoldlist]
+# Python 2 and 3: option 3
+try:
+    import itertools.imap as map
+except ImportError:
+    pass
+
+mynewlist = list(map(f, myoldlist))    # inefficient on Py2
+assert mynewlist == [f(x) for x in myoldlist]
+# Python 2 and 3: option 4
+from future.utils import lmap
+
+mynewlist = lmap(f, myoldlist)
+assert mynewlist == [f(x) for x in myoldlist]
+# Python 2 and 3: option 5
+from past.builtins import map
+
+mynewlist = map(f, myoldlist)
+assert mynewlist == [f(x) for x in myoldlist]
 ```
 
 **Tuples**
@@ -231,25 +325,27 @@ We saw that lists and strings have many common properties, such as indexing and 
 A tuple consists of a number of values separated by commas, for instance:
 
 ```python
->>>
 t = 12345, 54321, 'hello!'
 t[0]
-12345
+# 12345
 t
-(12345, 54321, 'hello!')
+# (12345, 54321, 'hello!')
+
 # Tuples may be nested:
-... u = t, (1, 2, 3, 4, 5)
+u = t, (1, 2, 3, 4, 5)
 u
-((12345, 54321, 'hello!'), (1, 2, 3, 4, 5))
+# ((12345, 54321, 'hello!'), (1, 2, 3, 4, 5))
+
 # Tuples are immutable:
-... t[0] = 88888
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: 'tuple' object does not support item assignment
+t[0] = 88888
+# Traceback (most recent call last):
+#   File "<stdin>", line 1, in <module>
+# TypeError: 'tuple' object does not support item assignment
+
 # but they can contain mutable objects:
-... v = ([1, 2, 3], [3, 2, 1])
+v = ([1, 2, 3], [3, 2, 1])
 v
-([1, 2, 3], [3, 2, 1])
+# ([1, 2, 3], [3, 2, 1])
 ```
 
 **Set**
@@ -322,7 +418,7 @@ my_math.add(1, 2)
 
 **Python main method**
 
-if you have a if statement like below, that block of code will not be executed when you import to other module.
+If you have a if statement like below, that block of code will not be executed when you import to other module.
 
 ```python
 if __name__ == "__main__":
@@ -334,7 +430,9 @@ if __name__ == "__main__":
 
 When your code base grows larger, you will need to think about how to organize your code. 
 
-Python will treat folder with `__init__.py` as a package. Think of below:
+Packages allows you to create folder containing modules. However, in order to 
+create a package, you will need to create a file called `__init__.py` for Python
+runtime to know this folder is a package like below:
 
 ```
 main.py
@@ -361,21 +459,26 @@ while source.hasNext():
 ### File read/write
 
 ```python
-f = open('file_name.extension', 'r') # second argument is for mode read or write or both!
+# Python 2 only
+f = open('myfile.txt')
+data = f.read()              # as a byte string
+text = data.decode('utf-8')
 
-f.read() # reads out the entire content
-f.readline() # reads line by line
+# Python 2 and 3: alternative 1
+from io import open
+f = open('myfile.txt', 'rb')
+data = f.read()              # as bytes
+text = data.decode('utf-8')  # unicode, not bytes
 
-# below also works
-for line in f:
-  print line
-
-f.write('Hello world!\n') # to write to file
+# Python 2 and 3: alternative 2
+from io import open
+f = open('myfile.txt', encoding='utf-8')
+text = f.read()    # unicode, not bytes
 ```
 
 ### json
 
-Json is built-in with Python!
+JSON is built-in with Python!
 
 ```python
 # write json string
@@ -404,30 +507,21 @@ while True:
 ```python
 class MyClass: # can defined inheritance MyClass(ParentClass, ParentClass2)
     """A simple example class"""
-    i = 12345
-    
+    # Static variable
+    static_int = 12345
+
     def __init__(self):
+      self.instance_int = 54321
       print 'no arg constructor is called'
 
     def f(self): # first argument is always self
         return 'hello world'
 ```
 
-### CSV
-
-```python
-import csv
-
-with open('example.csv', 'rb') as csvfile:
-  spamreader = csv.reader(csvfile)
-  for row in spamreader:
-    print ', '.join(row)
-```
-
 ### Package manager -- pip
 
 https://pip.pypa.io/en/stable/installing/
 
-## Write Python 2 & 3 Compatible Code
+### Recommended reading
 
 http://python-future.org/compatible_idioms.html
