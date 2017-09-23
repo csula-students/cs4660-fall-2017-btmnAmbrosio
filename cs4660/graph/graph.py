@@ -131,22 +131,30 @@ class AdjacencyList(object):
         return neighborList
 
     def add_node(self, node):
-        isInAdjacencyList = False
-
-        for currentNode in self.adjacency_list:
-
-            if currentNode==node:
-                isInAdjacencyList=True
-        
-
-
-        if isInAdjacencyList:
+        if node in self.adjacency_list:
             return False
         else:
-            self.adjacency_list[node] = []
+            self.adjacency_list[node]=[]
             return True
 
+        #original way: ineficient
+         # isInAdjacencyList = False
+
+        # for currentNode in self.adjacency_list:
+
+        #     if currentNode==node:
+        #         isInAdjacencyList=True
+        
+        # if isInAdjacencyList:
+        #     return False
+        # else:
+        #     self.adjacency_list[node] = []
+        #     return True
+
+
+
     def remove_node(self, node):
+
         if node in self.adjacency_list:
             del self.adjacency_list[node]
             for (currentNode, edgeList) in self.adjacency_list.items():
@@ -157,24 +165,32 @@ class AdjacencyList(object):
         return False
 
     def add_edge(self, edge):
-        isInAdjacencyList = False
-        if len(self.adjacency_list)<1:
-            return False
-
-        for (currentNode, edgesList) in self.adjacency_list.items():
-
-            if currentNode==edge.from_node:
-             
-                for currentEdge in edgesList:
-                    if currentEdge == edge:
-                        isInAdjacencyList=True
-                if isInAdjacencyList:
-                    return False
-                else:
-                    edgesList.append(edge)
-                    return True
-            
+        
+        if edge.from_node in self.adjacency_list:
+            if edge in self.adjacency_list[edge.from_node]:
+                return False
+            else:
+                self.adjacency_list[edge.from_node].append(edge)
+                return True
         return False
+
+        #previous way: inefficient 
+
+        # isInAdjacencyList = False
+        # for (currentNode, edgesList) in self.adjacency_list.items():
+
+        #     if currentNode==edge.from_node:
+             
+        #         for currentEdge in edgesList:
+        #             if currentEdge == edge:
+        #                 isInAdjacencyList=True
+        #         if isInAdjacencyList:
+        #             return False
+        #         else:
+        #             edgesList.append(edge)
+        #             return True
+            
+        # return False
 
 
 
