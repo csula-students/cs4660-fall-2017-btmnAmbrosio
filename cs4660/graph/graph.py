@@ -28,7 +28,7 @@ def construct_graph_from_file(graph, file_path):
     """
     TODO: read content from file_path, then add nodes and edges to graph object
 
-    note that grpah object will be either of AdjacencyList, AdjacencyMatrix or ObjectOriented
+    note that graph object will be either of AdjacencyList, AdjacencyMatrix or ObjectOriented
 
     In example, you will need to do something similar to following:
 
