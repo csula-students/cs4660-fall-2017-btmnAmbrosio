@@ -279,9 +279,10 @@ class AdjacencyMatrix(object):
             outerIndex=self.__get_node_index(edge.from_node)
             innerIndex=self.__get_node_index(edge.to_node)
             # If the value of the indxes is greater than 0 return false
-            # because the edge already exists
+            # because the edge already exists. 
             if self.adjacency_matrix[outerIndex][innerIndex]>0:
                 return False
+            # otherswise make value equal to the weight of the edge weight.
             else:
                 self.adjacency_matrix[outerIndex][innerIndex]=edge.weight
                 return True
