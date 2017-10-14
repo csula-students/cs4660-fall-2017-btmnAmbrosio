@@ -129,7 +129,7 @@ class AdjacencyList(object):
 
     def neighbors(self, node):
         neighborList=[]
-        # for every edge (currentEdge) in the list of edges that belongs to node1 (adjacencylist[node_1])
+        # for every edge (currentEdge) in the list of edges that belongs to node_1 (adjacencylist[node_1])
         for currentEdge in self.adjacency_list[node]:
             # add the to_node of the current edge to the neighborList
             neighborList.append(currentEdge.to_node)
@@ -193,6 +193,11 @@ class AdjacencyList(object):
                         return True
                 # return false since there were no edges matching the one passed in
                 return False
+
+    def distance(self, node_1, node_2):
+        for currentEdge in self.adjacency_list[node_1]:
+                if(node_2==currentEdge.to_node and node_1==currentEdge.from_node):
+                    return currentEdge.weight 
 
 class AdjacencyMatrix(object):
     def __init__(self):
@@ -300,6 +305,12 @@ class AdjacencyMatrix(object):
             return False
         return False
 
+    def distance(self, node_1, node_2):
+        node_1Index=self.__get_node_index(node_1)
+        node_2Index=self.__get_node_index(node_2)
+        return self.adjacency_matrix[node_1Index][node_2Index]        
+
+
     def __get_node_index(self, node):
         """helper method to find node index"""
         return self.nodes.index(node)
@@ -363,4 +374,9 @@ class ObjectOriented(object):
             return True
         else:
             return False
+
+    def distance(self, node_1, node_2):
+        for edge in self.edges:
+            if edge.from_node==node_1 and edge.to_node==node_2:
+                return edge.weight
 
