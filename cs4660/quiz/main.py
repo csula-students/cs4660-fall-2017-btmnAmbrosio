@@ -56,44 +56,37 @@ def __json_request(target_url, body):
     return response
 
 if __name__ == "__main__":
-    # Your code starts here
-    empty_room = get_state('7f3dc077574c013d98b2de8f735058b4')
-    print(empty_room)
-    print("--------------")
-    print(transition_state(empty_room['id'], empty_room['neighbors'][0]['id']))
-
 
     class Node(object):
         """Node represents basic unit of graph"""
-        def __init__(self, id, x, y,neighbors):
+        def __init__(self, id, name, neighbors):
             self.id = id
-            self.x = x
-            self.y = y
+            self.name = name
             self.neighbors= neighbors
 
         def __str__(self):
-            return 'Node({})'.format(self.id)
+            return '{}({})'.format(self.name, self.id )
         def __repr__(self):
-            return 'Node({})'.format(self.id)
+            return '{}({})'.format(self.name, self.id )
 
         def __eq__(self, other_node):
-            return self.x == other_node.x and self.y == other_node.y and self.id == other_node.id
+            return self.name == other_node.name  and self.id == other_node.id
         def __ne__(self, other):
             return not self.__eq__(other)
 
         def __hash__(self):
-            return hash(str(self.x) + "," + str(self.y) + "," + str(self.id))
+            return hash( str(self.name) + "," + str(self.id))
 
     class Edge(object):
         """Edge represents basic unit of graph connecting between two edges"""
         def __init__(self, from_node, to_node):
             self.from_node = from_node
             self.to_node = to_node
-            self.weight = math.sqrt((edge.from_node.x - edge.to_node.x)**2 + (edge.from_node.y - edge.to_node.y)**2)
+            self.weight = transition_state(from_node.id, to_node.id)['event']['effect']
         def __str__(self):
-            return 'Edge(from {}, to {}, weight {})'.format(self.from_node, self.to_node, self.weight)
+            return '{} : {} :{}'.format(self.from_node, self.to_node, self.weight)
         def __repr__(self):
-            return 'Edge(from {}, to {}, weight {})'.format(self.from_node, self.to_node, self.weight)
+            return '{} : {} :{}'.format(self.from_node, self.to_node, self.weight)
 
         def __eq__(self, other_node):
             return self.from_node == other_node.from_node and self.to_node == other_node.to_node and self.weight == other_node.weight
@@ -118,10 +111,14 @@ if __name__ == "__main__":
             return False
 
         def neighbors(self, node):
-            neighborsList = []
-            for neighbor in node.neighbors:
-                neighborsList.append[Node(node["id"],node["location"]["x"],node["location"]["y"],node["neighbors"])]
-
+            if not node.neighbors:  
+                neighborsList = []
+                nodeHolder=get_state(node.id)
+                node=Node(nodeHolder["id"],nodeHolder["location"]["name"],nodeHolder["neighbors"])
+                for neighbor in node.neighbors:
+                    neighborsList.append(Node(neighbor["id"],neighbor["location"]["name"],neighbor["neighbors"]))
+                return neighborsList
+            return node.neighbors
 
         def add_node(self, node):
             if node in self.nodes:
@@ -162,23 +159,20 @@ if __name__ == "__main__":
                 return False
 
         def distance(self, node_1, node_2):
-            for edge in self.edges:
-                if edge.from_node==node_1 and edge.to_node==node_2:
-                    return math.sqrt((edge.from_node.x - edge.to_node.x)**2 + (edge.from_node.y - edge.to_node.y)**2)
+                    return transition_state(node_1.id, node_2.id)['event']['effect']
 
-    # def weight
+
 
     def bfs(graph1, initial_node, dest_node):
-
-        graph1.add_node(initial_node)
-
         destinationFound=False
         distanceList={}
         parentList={}
         nodeList=[]
         results=[]
         endTile=None
-    
+
+
+        graph1.add_node(initial_node)
         #initialize queue 
         nodeQ= Queue()
     
@@ -190,7 +184,6 @@ if __name__ == "__main__":
         parentList[initial_node]=None 
         #add initial node to queue 
         nodeQ.put(initial_node)
-
         #while the queue is not empty and the destination is not found  
         while ( not nodeQ.empty() and not destinationFound):
             #get the next number from queue and put it in currentNode 
@@ -199,28 +192,24 @@ if __name__ == "__main__":
             children = graph1.neighbors(currentNode)
             #for each of the currentNode's "child"
             for child in children:
-                childNeighbors=getState(child["id"])
-                childNode=Node(child["id"],child["location"]["x"],child["location"]["y"],childNeighbors)
-
                 # if the child is not in the nodeList
-                if childNode not in nodeList:
-                    
-                    graph1.add_node(childNode)
-
+                if child not in nodeList:
+                    graph1.add_node(child)
+                    # currentEdge=Edge(currentNode,childNode)
+                    # graph1.add_edge(currentEdge)
                     #then add the child to the nodeList 
-                    nodeList.append(childNode)
+                    nodeList.append(child)
                     # add the distance of the parent node to the current child to the distance list
-                    distanceList[childNode]=graph1.distance(currentNode, childNode)
+                    # distanceList[childNode]=currentEdge.weight
                     #add the currentNode as the parent of the child in the parentList 
-                    parentList[childNode]=currentNode
+                    parentList[child]=currentNode
                     # add the child to the queue
-                    nodeQ.put(childNode)
-                # if the child is the destination node
-                if childNode==dest_node:
+                    nodeQ.put(child)
+                if child==dest_node:
                     #set variable destinationFound to True in order to get out of while loop 
                     destinationFound=True
                     # set the destination node to endTile
-                    endTile = childNode
+                    endTile = child
             
     
         #if the destination is found 
@@ -228,7 +217,7 @@ if __name__ == "__main__":
             #while the parent of endTile is not None. Note: The first endTile is the destination node
             while(parentList[endTile] is not None):
                 # add the edge of the endTile from its parent to the results list
-                results.append(graph.Edge(parentList[endTile], endTile, distanceList[endTile]))
+                results.append(Edge(parentList[endTile], endTile))
                 # set the endTile to the parent of the current endTile 
                 endTile=parentList[endTile]
             # reverse the results
@@ -239,11 +228,145 @@ if __name__ == "__main__":
         else: 
             return -1
 
-    test_node=Node(empty_room["id"],empty_room["location"]["x"],empty_room["location"]["y"],empty_room["neighbors"])
-    print('=============')
-    print(test_node.x)
-    print(test_node.y)
-    print(test_node.id)
-    print(test_node.neighbors)
-    print('=============')
-    print(test_node.neighbors[1])
+
+
+    def dijkstra_search(graph1, initial_node, dest_node):
+    
+        # This class is used in order to put a node along side its' priority
+        # and still get both back when OurPriorityQueue.get(). Also allows to compare node priority. 
+        class PriorityNode(object):
+            def __init__(self, priority, node):
+                self.priority = priority
+                self.node = node
+            #commented out because doesnt work with python 3. 
+            # Keeping just in case it will still works with python 2 
+            # def __cmp__(self, other):
+            #     return cmp(self.priority, other.priority)
+
+            #campares the priority of this node to the other 
+            def __lt__(self, other):
+                return self.priority > other.priority
+
+
+        distanceList={}
+        parentList={}
+        distanceList[initial_node]=0
+        nodeList=[]
+        destinationFound=False
+        nodePriorityQ= PriorityQueue()
+        endTile=None
+        results=[]
+        children=[]
+        visited=[]
+
+
+
+        graph1.add_node(initial_node)
+        # add the distance to get to the initial_node, which is 0 to the distanceList
+        distanceList[initial_node]=0
+        #Since the initial_node has no parent set its value in parentList is None 
+        parentList[initial_node]=None
+        #add initial_node to list of known nodes (nodeList)
+        nodeList.append(initial_node)
+        # create the "priority node" which is a class containing a node and its priority 
+        pNode = PriorityNode(distanceList[initial_node],initial_node)
+        # add the "priority node" to the queue 
+        nodePriorityQ.put(pNode)
+
+        visited={}
+        visited[initial_node]=False
+    
+        # while the priority queue is not empty
+        while  not nodePriorityQ.empty():
+
+
+            # A "priority node" which has the highest priority value is removed from the priority queue
+            # and set to the variable current_node_holder.
+            current_node_holder = nodePriorityQ.get()
+            if not visited[current_node_holder.node]:
+                visited[current_node_holder.node]=True
+                # get all of the currentNode's neighbors or children
+                children = graph1.neighbors(current_node_holder.node)
+            
+                #for each of the currentNode's "children"
+                for child in children:
+                # if the current child is not in the nodeList
+                    if child not in nodeList:
+                        # print(child)
+                        #set its value in distanceList to "infinity" 
+                        distanceList[child]=float('-inf')
+                    
+                        # add the node to the list of known nodes
+                        nodeList.append(child)
+                        visited[child]=False
+                        
+                        
+
+                    # set variable alt, equal to the distance from the currentNode and the current child of that node
+                    # plus the distance from the initial_node to the current node
+                    alt=distanceList[current_node_holder.node]+graph1.distance(current_node_holder.node, child)
+    
+                    #if the variable alt is greater the distance of current child from the initial node 
+                    if alt > distanceList[child] and not visited[child]:
+                        # then set value of the child in the distanceList to alt.
+                        # This is the current known shortest path from initial node to this node 
+                        distanceList[child]=alt
+                        # set the parent of this current child as the current node in the parentList
+                        parentList[child]=current_node_holder.node
+                        # add the current child and its proirity, which is the distance from the initial
+                        # node to itself, to the priority queue.
+                        nodePriorityQ.put(PriorityNode(distanceList[child],child))
+                
+                    # if the destination is found set the destinationFound variable to true and 
+                    # set the endTile variable  to the destination node
+                    if child==dest_node:
+                        destinationFound=True
+                        endTile=dest_node
+                        parentList[endTile]=current_node_holder.node
+
+        #if the destination is found 
+        if destinationFound:
+            
+            #while the parent of endTile is not None. Note: The first endTile is the destination node
+            while(parentList[endTile] is not None):
+                edge=Edge(parentList[endTile], endTile)
+                # add the edge of the endTile from its parent to the results list
+                results.append(edge)
+                # set the endTile to the parent of the current endTile 
+                endTile=parentList[endTile]
+            # reverse the results the return
+            results.reverse()
+            return results
+        # the destination was not found so return -1 
+        else:
+            return -1
+
+
+    initial = get_state('7f3dc077574c013d98b2de8f735058b4')
+    destination = get_state('f1f131f647621a4be7c71292e79613f9')
+    initialNode= Node(initial["id"],initial["location"]["name"],initial["neighbors"])
+    destinationNode = Node(destination["id"],destination["location"]["name"],destination["neighbors"])
+
+    tempNeighborsList=[]
+    for neighbor in initialNode.neighbors:
+            tempNeighborsList.append(Node(neighbor["id"],neighbor["location"]["name"],neighbor["neighbors"]))
+    initialNode.neighbors=tempNeighborsList
+    
+    
+    bfsHp=0
+    print('BFS search in progress')
+    results=bfs(ObjectOriented(),initialNode, destinationNode )
+    print('BFS search complete')
+    for edge in results:
+        bfsHp=+edge.weight
+    print(results)
+    print( "HP : ", bfsHp)
+
+    dijHp=0
+    print('Dijkstra search in progress')
+    results=dijkstra_search(ObjectOriented(),initialNode, destinationNode )
+    print('Dijkstra search complete')
+    for edge in results:
+        dijHp+=edge.weight
+    print(results)
+    print( "HP : ", dijHp)
