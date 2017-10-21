@@ -2,6 +2,7 @@
 Searches module defines all different search algorithms
 """
 import sys
+import math
 from graph import graph
 from queue import Queue
 from queue import PriorityQueue
@@ -89,7 +90,7 @@ def dfs(graph1, initial_node, dest_node):
     currentBackTraceNode=dest_node
 
     def DFSstart(current):
-       return DFS(current, {initial_node:1})
+       return DFS(current, {})
 
     def DFS(current, parents):
         
@@ -100,12 +101,14 @@ def dfs(graph1, initial_node, dest_node):
         for child in children:
             if child not in parents:
                 parents[child] = current
-                DFS(child , parents)
+                test = DFS(child , parents)
+                if test is not None:
+                    return test
 
     parentsList = DFSstart(initial_node)
-    parentsList[initial_node]=1
+    parentsList[initial_node]=None
 
-    while(parentsList[currentBackTraceNode] != 1):
+    while(parentsList[currentBackTraceNode] is not None):
             # add the edge of the endTile from its parent to the results list
             results.append(graph.Edge(parentsList[currentBackTraceNode], currentBackTraceNode, graph1.distance(parentsList[currentBackTraceNode],currentBackTraceNode)))
             # set the endTile to the parent of the current endTile 
@@ -226,26 +229,27 @@ def a_star_search(graph1, initial_node, dest_node):
     uses graph to do search from the initial_node to dest_node
     returns a list of actions going from the initial node to dest_node
     """
+  
     # This class is used in order to put a node along side its' priority
     # and still get both back when OurPriorityQueue.get(). Also allows to compare node priority. 
     class PriorityNode(object):
         def __init__(self, priority, node):
             self.priority = priority
             self.node = node
-        #commented out because doesnt work with python 3. 
-        # Keeping just in case it will still works with python 2 
-        # def __cmp__(self, other):
-        #     return cmp(self.priority, other.priority)
-
-        #campares the priority of this node to the other 
         def __lt__(self, other):
             return self.priority < other.priority
 
+    def  heuristic(node, goal):
+        dx = abs(node.data.x - goal.data.x)
+        dy = abs(node.data.y - goal.data.y)
+        D=1
+        return D * math.sqrt(dx * dx + dy * dy)
 
     nodePriorityQ = PriorityQueue()
     parentList={}
     distanceList={}
     neighborsList=[]
+    exploredSet=[]
     results=[]
     destinationFound=False
     
@@ -256,6 +260,8 @@ def a_star_search(graph1, initial_node, dest_node):
     # create the "priority node" which is a class containing a node and its priority 
     pNode = PriorityNode(distanceList[initial_node],initial_node)
     
+    nodePriorityQ.put(pNode)
+
     # while the priority queue is not empty
     while  not nodePriorityQ.empty():
         # A "priority node" which has the lowest priority value is removed from the priority queue
@@ -266,15 +272,17 @@ def a_star_search(graph1, initial_node, dest_node):
         # if the current node is equal to the destination node
         if currentNode == dest_node:
             destinationFound=True
-            break
+            continue
+        exploredSet.append(currentNode)
 
         neighborsList=graph1.neighbors(currentNode)
 
         for neighbor in neighborsList:
+
             newCost = distanceList[currentNode] + graph1.distance(currentNode, neighbor)
             if neighbor not in distanceList or newCost < distanceList[neighbor]:
                 distanceList[neighbor] = newCost
-                priority = newCost 
+                priority = newCost + heuristic(dest_node, neighbor)
                 nodePriorityQ.put(PriorityNode(priority, neighbor))
                 parentList[neighbor] = currentNode
 
@@ -293,4 +301,78 @@ def a_star_search(graph1, initial_node, dest_node):
         return results
     # the destination was not found so return -1 
     else:
-        return -1
+        return []
+
+
+
+
+      # # derived from pseudo code from lecture. Wasn't able to make it work properly
+   
+    # def  heuristicCost(node, goal):
+    #     dx = abs(node.data.x - goal.data.x)
+    #     dy = abs(node.data.y - goal.data.y)
+    #     D=1
+    #     return D * math.sqrt(dx + dy)
+
+    # frontier = Queue()
+    # parentList = {}
+    # exploredSet = []
+    # gScore = {}
+    # fScore = {}
+    # results = []
+    # destinationFound = False
+
+    # currentlyInFrontier = []
+
+   
+    # frontier.put(initial_node)
+    # currentlyInFrontier.append(initial_node)
+
+    # parentList[initial_node] = None
+    # gScore[initial_node] = 0
+    # fScore[initial_node]=heuristicCost(initial_node , dest_node)
+
+    # while  not frontier.empty():
+    #     currentNode = frontier.get()
+    #     currentlyInFrontier.remove(currentNode)
+
+    #     # if the current node is equal to the destination node
+    #     if currentNode == dest_node:
+    #         destinationFound=True
+    #         continue
+    #     exploredSet.append(currentNode)
+
+    #     neighborsList=graph1.neighbors(currentNode)
+
+    #     for neighbor in neighborsList:
+    #         if neighbor in exploredSet:
+    #             continue
+            
+    #         if neighbor not in gScore:
+    #             gScore[neighbor] = float('inf')
+    #         tempGScore = gScore[neighbor] + graph1.distance(currentNode, neighbor)
+    #         if neighbor not in currentlyInFrontier: 
+    #             frontier.put(neighbor)
+    #             currentlyInFrontier.append(neighbor)
+    #         elif tempGScore >= gScore[neighbor]:
+    #             continue
+            
+            
+    #         parentList[neighbor] = currentNode
+    #         gScore[neighbor] = tempGScore
+    #         fScore[neighbor] = gScore[neighbor] + heuristicCost(neighbor, dest_node)
+
+    # if destinationFound:
+    #     endTile=dest_node
+    #     #while the parent of endTile is not None. Note: The first endTile is the destination node
+    #     while(parentList[endTile] is not None):
+    #         # add the edge of the endTile from its parent to the results list
+    #         results.append(graph.Edge(parentList[endTile], endTile, graph1.distance(parentList[endTile],endTile)))
+    #         # set the endTile to the parent of the current endTile 
+    #         endTile=parentList[endTile]
+    #     # reverse the results the return
+    #     results.reverse()
+    #     return results
+    # # the destination was not found so return -1 
+    # else:
+    #     return []

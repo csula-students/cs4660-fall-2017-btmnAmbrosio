@@ -129,11 +129,13 @@ class AdjacencyList(object):
 
     def neighbors(self, node):
         neighborList=[]
+        if node in self.adjacency_list:
         # for every edge (currentEdge) in the list of edges that belongs to node_1 (adjacencylist[node_1])
-        for currentEdge in self.adjacency_list[node]:
+            for currentEdge in self.adjacency_list[node]:
             # add the to_node of the current edge to the neighborList
-            neighborList.append(currentEdge.to_node)
-        return neighborList
+                neighborList.append(currentEdge.to_node)
+            return neighborList
+        return[]
 
     def add_node(self, node):
         # if node is in the adjacency_list return false
